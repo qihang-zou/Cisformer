@@ -1,0 +1,35 @@
+# config.yaml
+datapreprocess:
+  enc_max_len: 2048 # "whole" for whole sequence
+  dec_max_len: 2048  # "whole" for whole sequence
+  multiple: 1 #100  
+  is_raw_count: True # type of count matrix for RNA
+
+model:
+  total_gene: 16706 
+  max_express: 64
+  dim: 210 # should be devided by 7
+  enc_depth: 0 
+  enc_heads: 1 
+  enc_ff_mult: 4
+  enc_dim_head: 128
+  enc_emb_dropout: 0.1
+  enc_ff_dropout: 0.1
+  enc_attn_dropout: 0.1
+  dec_depth: 6 
+  dec_heads: 6 
+  dec_ff_mult: 4
+  dec_dim_head: 128
+  dec_emb_dropout: 0.1
+  dec_ff_dropout: 0.1
+  dec_attn_dropout: 0.1
+  
+training:
+  SEED: 0 
+  batch_size: 16 
+  num_workers: 2
+  epoch: 500 
+  lr: 1e-3
+  gamma_step: 5
+  gamma: 0.9 
+  patience: 25  # patience for early stop
