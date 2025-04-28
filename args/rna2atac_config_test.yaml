@@ -1,6 +1,6 @@
 # config.yaml
 datapreprocess:
-  enc_max_len: 3529 # "whole" for whole sequence
+  enc_max_len: 3600 # "whole" for whole sequence
   dec_max_len: 'whole' # "whole" for whole sequence
   multiple: 1   
   is_raw_count: True # type of count matrix for RNA

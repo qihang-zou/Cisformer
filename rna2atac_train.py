@@ -183,6 +183,7 @@ def main():
     #Luz total_box = tqdm.tqdm(range(epoch)) if accelerator.is_main_process else range(epoch)
     
     max_auroc = 0 #Luz min_loss = 10000 #max_auprc = 0
+    min_loss = 1e10
 
     for e in range(epoch): #Luz for e in total_box:
         val_num = 0
@@ -227,6 +228,8 @@ def main():
                 loss = F.binary_cross_entropy(logist_hat, tgt.float())
                 
                 accelerator.backward(loss)
+                if accelerator.sync_gradients:
+                    accelerator.clip_grad_norm_(model.parameters(), 1)
                 optimizer.step()
                 
                 # accelerator.print("gpu allocate:", torch.cuda.max_memory_allocated() / 1024**3)
@@ -339,7 +342,8 @@ def main():
             accelerator.free_dataloader()
                     
         #Qihang if accelerator.is_main_process: #Luz 
-        accelerator.print(f"Validating epoch {e+1}:", f"    val_loss: {round(epoch_loss_val/val_num, 4)}", f"    auroc: {round(epoch_auroc_val/val_num, 4)}", f"    auprc: {round(epoch_auprc_val/val_num, 4)}") #Luz
+        epoch_loss_val = epoch_loss_val / val_num
+        accelerator.print(f"Validating epoch {e+1}:", f"    val_loss: {round(epoch_loss_val, 4)}", f"    auroc: {round(epoch_auroc_val/val_num, 4)}", f"    auprc: {round(epoch_auprc_val/val_num, 4)}") #Luz
         accelerator.print('#'*80)
 
         #Qihang scheduler.step()
@@ -349,11 +353,10 @@ def main():
         #Luz stop_loss = False
         
         # epoch_auroc_val_avg = accelerator.gather_for_metrics(torch.tensor([round(epoch_auroc_val/val_num, 4)])).mean().item()
-        epoch_auroc_val_avg = round(epoch_auroc_val, 4)
-        if epoch_auroc_val_avg<=max_auroc: #Luz if (epoch_auroc_val_avg-max_auroc)<=0.0001:
+        if epoch_loss_val>=max_auroc: #Luz if (epoch_auroc_val_avg-max_auroc)<=0.0001:
             stop_auroc = True
         else:
-            max_auroc = epoch_auroc_val_avg
+            max_auroc = epoch_loss_val
             stop_auroc = False
 
         #Luz print(f"epoch_auroc_val_avg:{epoch_auroc_val_avg}", f"        max_auroc:{max_auroc}", f"     patience:{stopper.patience}")

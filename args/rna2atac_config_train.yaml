@@ -32,4 +32,4 @@ training:
   lr: 1e-3
   gamma_step: 5
   gamma: 0.9
-  patience: 25  # patience for early stop
+  patience: 5  # patience for early stop
