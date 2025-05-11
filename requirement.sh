@@ -6,4 +6,6 @@ conda install -c conda-forge accelerate==0.22.0
 conda install -c conda-forge scanpy python-igraph leidenalg
 pip install ninja
 pip install flash-attn --no-build-isolation
+pip install torcheval
 conda install tensorboard
+conda install pybedtools
