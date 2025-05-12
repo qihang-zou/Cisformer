@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cisformer"
+version = "1.0.0"
+description = "Cisformer command-line tools"
+authors = [{ name = "Chenfei Wang", email = "08chenfeiwang@tongji.edu.cn" }]
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+dependencies = []
+
+[project.scripts]
+cisformer = "cisformer.runner:main"
+
+[project.urls]
+Homepage = "https://github.com/wanglabtongji/Cisformer"
+Issues = "https://github.com/qihang-zou/Cisformer/issues"
+
+[tool.hatch.build]
+packages = ["cisformer"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "figs",
+    "test_data",
+    "cisformer_config",
+    "dist",
+    "logs",
+    "output",
+    "preprocessed_dataset",
+    "save"
+]
+
+[tool.hatch.build.targets.wheel]
+exclude = [
+    "figs",
+    "test_data",
+    "cisformer_config",
+    "dist",
+    "logs",
+    "output",
+    "preprocessed_dataset",
+    "save"
+]
