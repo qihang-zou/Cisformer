@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="python" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Index &mdash; cisformer 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=40be6288"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            cisformer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Translation of Single-Cell Data Across Modalities with <strong>Cisformer</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#about">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#environment-setup">Environment Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html#miniconda3">Miniconda3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#creating-the-cisformer-environment">Creating the Cisformer Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#install-from-pypi">Install from PyPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#quick-start">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#generate-default-config-files">Generate Default Config Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#rna-atac">RNA ➝ ATAC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html#configure-parameters-optional">1. Configure Parameters (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#data-preprocessing">2. Data Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#model-training">3. Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#prediction">4. Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#atac-rna">ATAC ➝ RNA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html#id1">1. Configure Parameters (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#id2">2. Data Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#id3">3. Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#prediction-optional">4. Prediction (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#link-cis-regulators-and-genes">5. Link cis-regulators and Genes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#using-pip-recommended">Using pip (recommended):</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#manual-installation">Manual Installation:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#generating-configuration-files">Generating Configuration Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#rna-atac-mode">RNA ➝ ATAC Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#atac-rna-mode">ATAC ➝ RNA Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">cisformer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cisformer.html">cisformer package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html">cisformer.M2Mmodel package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.atac2rna_predict">cisformer.atac2rna_predict module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_predict.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.atac2rna_surround_attention_generate">cisformer.atac2rna_surround_attention_generate module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.Info"><code class="docutils literal notranslate"><span class="pre">Info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.combine_grange"><code class="docutils literal notranslate"><span class="pre">combine_grange()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.comp"><code class="docutils literal notranslate"><span class="pre">comp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.exists"><code class="docutils literal notranslate"><span class="pre">exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.grange_intersect"><code class="docutils literal notranslate"><span class="pre">grange_intersect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.granges2bed"><code class="docutils literal notranslate"><span class="pre">granges2bed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.read_result"><code class="docutils literal notranslate"><span class="pre">read_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.split_grange"><code class="docutils literal notranslate"><span class="pre">split_grange()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.atac2rna_train">cisformer.atac2rna_train module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_train.CrossEntropy_weight_computor"><code class="docutils literal notranslate"><span class="pre">CrossEntropy_weight_computor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_train.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.compute_surround_enhancer">cisformer.compute_surround_enhancer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.compute_surround_enhancer.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.data_preprocess">cisformer.data_preprocess module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.data_preprocess.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.data_preprocess.pair_data_process"><code class="docutils literal notranslate"><span class="pre">pair_data_process()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.generate_default_config">cisformer.generate_default_config module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.generate_default_config.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.map_rna_atac">cisformer.map_rna_atac module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.map_rna_atac.is_ens"><code class="docutils literal notranslate"><span class="pre">is_ens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.map_rna_atac.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.rna2atac_predict">cisformer.rna2atac_predict module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.rna2atac_predict.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.rna2atac_train">cisformer.rna2atac_train module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.rna2atac_train.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.runner">cisformer.runner module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.runner.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">cisformer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Index</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.Accelerate_early_stop_helper">Accelerate_early_stop_helper (class in cisformer.M2Mmodel.utils)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Always">Always (class in cisformer.M2Mmodel.block)</a>
+
+      <ul>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.Always">(class in cisformer.M2Mmodel.M2M)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.apply_rotary_pos_emb">apply_rotary_pos_emb() (in module cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.AtacLM">AtacLM (class in cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Attention">Attention (class in cisformer.M2Mmodel.block)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.binning">binning() (in module cisformer.M2Mmodel.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.cast_tuple">cast_tuple() (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Chunk">Chunk (class in cisformer.M2Mmodel.block)</a>
+</li>
+      <li>
+    cisformer
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.atac2rna_predict
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer.atac2rna_predict">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.atac2rna_surround_attention_generate
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer.atac2rna_surround_attention_generate">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.atac2rna_train
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer.atac2rna_train">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.compute_surround_enhancer
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer.compute_surround_enhancer">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.data_preprocess
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer.data_preprocess">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.generate_default_config
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer.generate_default_config">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.M2Mmodel
+
+      <ul>
+        <li><a href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    cisformer.M2Mmodel.block
+
+      <ul>
+        <li><a href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel.block">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.M2Mmodel.M2M
+
+      <ul>
+        <li><a href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel.M2M">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.M2Mmodel.utils
+
+      <ul>
+        <li><a href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel.utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.map_rna_atac
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer.map_rna_atac">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.rna2atac_predict
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer.rna2atac_predict">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.rna2atac_train
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer.rna2atac_train">module</a>
+</li>
+      </ul></li>
+      <li>
+    cisformer.runner
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer.runner">module</a>
+</li>
+      </ul></li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.comb_sublist">comb_sublist() (in module cisformer.M2Mmodel.utils)</a>
+</li>
+      <li><a href="cisformer.html#cisformer.atac2rna_surround_attention_generate.combine_grange">combine_grange() (in module cisformer.atac2rna_surround_attention_generate)</a>
+</li>
+      <li><a href="cisformer.html#cisformer.atac2rna_surround_attention_generate.comp">comp() (in module cisformer.atac2rna_surround_attention_generate)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.CrossAttention">CrossAttention (class in cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.html#cisformer.atac2rna_train.CrossEntropy_weight_computor">CrossEntropy_weight_computor() (in module cisformer.atac2rna_train)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.DEC_PREFIX">DEC_PREFIX (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.default">default() (in module cisformer.M2Mmodel.block)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.empty">empty() (in module cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.html#cisformer.atac2rna_surround_attention_generate.exists">exists() (in module cisformer.atac2rna_surround_attention_generate)</a>
+
+      <ul>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.exists">(in module cisformer.M2Mmodel.block)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.exists">(in module cisformer.M2Mmodel.M2M)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.exists">(in module cisformer.M2Mmodel.utils)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.extract_and_set_enc_dec_kwargs">extract_and_set_enc_dec_kwargs() (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.extract_enc_dec_kwargs">extract_enc_dec_kwargs() (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.FeedForward">FeedForward (class in cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.FixedPositionalEmbedding">FixedPositionalEmbedding (class in cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Always.forward">forward() (cisformer.M2Mmodel.block.Always method)</a>
+
+      <ul>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Attention.forward">(cisformer.M2Mmodel.block.Attention method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Chunk.forward">(cisformer.M2Mmodel.block.Chunk method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.CrossAttention.forward">(cisformer.M2Mmodel.block.CrossAttention method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.FeedForward.forward">(cisformer.M2Mmodel.block.FeedForward method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreLayerNorm.forward">(cisformer.M2Mmodel.block.PreLayerNorm method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreScaleNorm.forward">(cisformer.M2Mmodel.block.PreScaleNorm method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreShiftTokens.forward">(cisformer.M2Mmodel.block.PreShiftTokens method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.ReZero.forward">(cisformer.M2Mmodel.block.ReZero method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.SelfAttention.forward">(cisformer.M2Mmodel.block.SelfAttention method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.SequentialSequence.forward">(cisformer.M2Mmodel.block.SequentialSequence method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.TransformerBlock.forward">(cisformer.M2Mmodel.block.TransformerBlock method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.Always.forward">(cisformer.M2Mmodel.M2M.Always method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.AtacLM.forward">(cisformer.M2Mmodel.M2M.AtacLM method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.FixedPositionalEmbedding.forward">(cisformer.M2Mmodel.M2M.FixedPositionalEmbedding method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_atac2rna.forward">(cisformer.M2Mmodel.M2M.M2M_atac2rna method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_rna2atac.forward">(cisformer.M2Mmodel.M2M.M2M_rna2atac method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.Pass.forward">(cisformer.M2Mmodel.M2M.Pass method)</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.RnaLM.forward">(cisformer.M2Mmodel.M2M.RnaLM method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.New_Accelerator.free_dataloader">free_dataloader() (cisformer.M2Mmodel.utils.New_Accelerator method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_atac2rna.generate_attn_weight">generate_attn_weight() (cisformer.M2Mmodel.M2M.M2M_atac2rna method)</a>
+
+      <ul>
+        <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_rna2atac.generate_attn_weight">(cisformer.M2Mmodel.M2M.M2M_rna2atac method)</a>
+</li>
+      </ul></li>
+      <li><a href="cisformer.html#cisformer.atac2rna_surround_attention_generate.grange_intersect">grange_intersect() (in module cisformer.atac2rna_surround_attention_generate)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.html#cisformer.atac2rna_surround_attention_generate.granges2bed">granges2bed() (in module cisformer.atac2rna_surround_attention_generate)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.group_by_key_prefix">group_by_key_prefix() (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.group_by_key_prefix_and_remove_prefix">group_by_key_prefix_and_remove_prefix() (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.group_dict_by_key">group_dict_by_key() (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.html#cisformer.atac2rna_surround_attention_generate.Info">Info() (in module cisformer.atac2rna_surround_attention_generate)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.input_with_timeout">input_with_timeout() (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.html#cisformer.map_rna_atac.is_ens">is_ens() (in module cisformer.map_rna_atac)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.list_digit">list_digit() (in module cisformer.M2Mmodel.utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.list_digit_back">list_digit_back() (in module cisformer.M2Mmodel.utils)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.load_data_path">load_data_path() (in module cisformer.M2Mmodel.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_atac2rna">M2M_atac2rna (class in cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_rna2atac">M2M_rna2atac (class in cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.html#cisformer.atac2rna_predict.main">main() (in module cisformer.atac2rna_predict)</a>
+
+      <ul>
+        <li><a href="cisformer.html#cisformer.atac2rna_surround_attention_generate.main">(in module cisformer.atac2rna_surround_attention_generate)</a>
+</li>
+        <li><a href="cisformer.html#cisformer.atac2rna_train.main">(in module cisformer.atac2rna_train)</a>
+</li>
+        <li><a href="cisformer.html#cisformer.compute_surround_enhancer.main">(in module cisformer.compute_surround_enhancer)</a>
+</li>
+        <li><a href="cisformer.html#cisformer.data_preprocess.main">(in module cisformer.data_preprocess)</a>
+</li>
+        <li><a href="cisformer.html#cisformer.generate_default_config.main">(in module cisformer.generate_default_config)</a>
+</li>
+        <li><a href="cisformer.html#cisformer.map_rna_atac.main">(in module cisformer.map_rna_atac)</a>
+</li>
+        <li><a href="cisformer.html#cisformer.rna2atac_predict.main">(in module cisformer.rna2atac_predict)</a>
+</li>
+        <li><a href="cisformer.html#cisformer.rna2atac_train.main">(in module cisformer.rna2atac_train)</a>
+</li>
+        <li><a href="cisformer.html#cisformer.runner.main">(in module cisformer.runner)</a>
+</li>
+      </ul></li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="cisformer.html#module-cisformer">cisformer</a>
+</li>
+        <li><a href="cisformer.html#module-cisformer.atac2rna_predict">cisformer.atac2rna_predict</a>
+</li>
+        <li><a href="cisformer.html#module-cisformer.atac2rna_surround_attention_generate">cisformer.atac2rna_surround_attention_generate</a>
+</li>
+        <li><a href="cisformer.html#module-cisformer.atac2rna_train">cisformer.atac2rna_train</a>
+</li>
+        <li><a href="cisformer.html#module-cisformer.compute_surround_enhancer">cisformer.compute_surround_enhancer</a>
+</li>
+        <li><a href="cisformer.html#module-cisformer.data_preprocess">cisformer.data_preprocess</a>
+</li>
+        <li><a href="cisformer.html#module-cisformer.generate_default_config">cisformer.generate_default_config</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel">cisformer.M2Mmodel</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel.block">cisformer.M2Mmodel.block</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel.M2M">cisformer.M2Mmodel.M2M</a>
+</li>
+        <li><a href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel.utils">cisformer.M2Mmodel.utils</a>
+</li>
+        <li><a href="cisformer.html#module-cisformer.map_rna_atac">cisformer.map_rna_atac</a>
+</li>
+        <li><a href="cisformer.html#module-cisformer.rna2atac_predict">cisformer.rna2atac_predict</a>
+</li>
+        <li><a href="cisformer.html#module-cisformer.rna2atac_train">cisformer.rna2atac_train</a>
+</li>
+        <li><a href="cisformer.html#module-cisformer.runner">cisformer.runner</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.New_Accelerator">New_Accelerator (class in cisformer.M2Mmodel.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.html#cisformer.data_preprocess.pair_data_process">pair_data_process() (in module cisformer.data_preprocess)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.PairDataset">PairDataset (class in cisformer.M2Mmodel.utils)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.Pass">Pass (class in cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.plot_attn_weight">plot_attn_weight() (in module cisformer.M2Mmodel.utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.PreDataset">PreDataset (class in cisformer.M2Mmodel.utils)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreLayerNorm">PreLayerNorm (class in cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreScaleNorm">PreScaleNorm (class in cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreShiftTokens">PreShiftTokens (class in cisformer.M2Mmodel.block)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.html#cisformer.atac2rna_surround_attention_generate.read_result">read_result() (in module cisformer.atac2rna_surround_attention_generate)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.ReZero">ReZero (class in cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.Rna2atacDataset">Rna2atacDataset (class in cisformer.M2Mmodel.utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.RnaLM">RnaLM (class in cisformer.M2Mmodel.M2M)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.rotate_every_two">rotate_every_two() (in module cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.route_args">route_args() (in module cisformer.M2Mmodel.block)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.select_least_used_gpu">select_least_used_gpu() (in module cisformer.M2Mmodel.utils)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.SelfAttention">SelfAttention (class in cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.SequentialSequence">SequentialSequence (class in cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.Accelerate_early_stop_helper.set">set() (cisformer.M2Mmodel.utils.Accelerate_early_stop_helper method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.setup_seed">setup_seed() (in module cisformer.M2Mmodel.utils)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.shift">shift() (in module cisformer.M2Mmodel.block)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.Accelerate_early_stop_helper.should_break">should_break() (cisformer.M2Mmodel.utils.Accelerate_early_stop_helper method)</a>
+</li>
+      <li><a href="cisformer.html#cisformer.atac2rna_surround_attention_generate.split_grange">split_grange() (in module cisformer.atac2rna_surround_attention_generate)</a>
+</li>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.string_begins_with">string_begins_with() (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.TransformerBlock">TransformerBlock (class in cisformer.M2Mmodel.block)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.whole_attn_score_matrix">whole_attn_score_matrix() (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.whole_attn_score_matrix_generator">whole_attn_score_matrix_generator() (in module cisformer.M2Mmodel.M2M)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Qihang Zou.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

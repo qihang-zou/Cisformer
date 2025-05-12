@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="python" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Translation of Single-Cell Data Across Modalities with Cisformer &mdash; cisformer 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=40be6288"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation Guide" href="installation.html" />
+    <link rel="prev" title="Welcome to Cisformer&#39;s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            cisformer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Translation of Single-Cell Data Across Modalities with <strong>Cisformer</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#about">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-setup">Environment Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miniconda3">Miniconda3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-cisformer-environment">Creating the Cisformer Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#install-from-pypi">Install from PyPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#quick-start">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#generate-default-config-files">Generate Default Config Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rna-atac">RNA ➝ ATAC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configure-parameters-optional">1. Configure Parameters (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-preprocessing">2. Data Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-training">3. Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prediction">4. Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#atac-rna">ATAC ➝ RNA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1. Configure Parameters (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2. Data Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3. Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prediction-optional">4. Prediction (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#link-cis-regulators-and-genes">5. Link cis-regulators and Genes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#using-pip-recommended">Using pip (recommended):</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#manual-installation">Manual Installation:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#generating-configuration-files">Generating Configuration Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#rna-atac-mode">RNA ➝ ATAC Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#atac-rna-mode">ATAC ➝ RNA Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">cisformer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cisformer.html">cisformer package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html">cisformer.M2Mmodel package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.atac2rna_predict">cisformer.atac2rna_predict module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_predict.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.atac2rna_surround_attention_generate">cisformer.atac2rna_surround_attention_generate module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.Info"><code class="docutils literal notranslate"><span class="pre">Info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.combine_grange"><code class="docutils literal notranslate"><span class="pre">combine_grange()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.comp"><code class="docutils literal notranslate"><span class="pre">comp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.exists"><code class="docutils literal notranslate"><span class="pre">exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.grange_intersect"><code class="docutils literal notranslate"><span class="pre">grange_intersect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.granges2bed"><code class="docutils literal notranslate"><span class="pre">granges2bed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.read_result"><code class="docutils literal notranslate"><span class="pre">read_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_surround_attention_generate.split_grange"><code class="docutils literal notranslate"><span class="pre">split_grange()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.atac2rna_train">cisformer.atac2rna_train module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_train.CrossEntropy_weight_computor"><code class="docutils literal notranslate"><span class="pre">CrossEntropy_weight_computor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.atac2rna_train.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.compute_surround_enhancer">cisformer.compute_surround_enhancer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.compute_surround_enhancer.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.data_preprocess">cisformer.data_preprocess module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.data_preprocess.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.data_preprocess.pair_data_process"><code class="docutils literal notranslate"><span class="pre">pair_data_process()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.generate_default_config">cisformer.generate_default_config module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.generate_default_config.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.map_rna_atac">cisformer.map_rna_atac module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.map_rna_atac.is_ens"><code class="docutils literal notranslate"><span class="pre">is_ens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.map_rna_atac.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.rna2atac_predict">cisformer.rna2atac_predict module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.rna2atac_predict.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.rna2atac_train">cisformer.rna2atac_train module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.rna2atac_train.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer.runner">cisformer.runner module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.html#cisformer.runner.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.html#module-cisformer">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">cisformer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Translation of Single-Cell Data Across Modalities with <strong>Cisformer</strong></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="translation-of-single-cell-data-across-modalities-with-cisformer">
+<h1>Translation of Single-Cell Data Across Modalities with <strong>Cisformer</strong><a class="headerlink" href="#translation-of-single-cell-data-across-modalities-with-cisformer" title="Link to this heading"></a></h1>
+<p><img alt="logo" src="figs/logo.png" /></p>
+<section id="about">
+<h2>About<a class="headerlink" href="#about" title="Link to this heading"></a></h2>
+<p><strong>Cisformer</strong> is a novel cross-modal deep learning model based on the Transformer architecture. It enables <strong>bidirectional prediction and association between cis-regulatory elements and genes</strong> at the single-cell level, with high efficiency and accuracy.</p>
+<p>To meet real-world application needs and improve model performance:</p>
+<ul class="simple">
+<li><p>For the RNA2ATAC task, a trained Cisformer can generate high-quality scATAC-seq data from scRNA-seq inputs.</p></li>
+<li><p>For the ATAC2RNA task, the model can generate pseudo-scRNA-seq data and construct a highly accurate cis-regulatory interaction matrix between cis-elements and genes.</p></li>
+</ul>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<p>For detailed usage and examples, see the <a class="reference internal" href="#"><span class="xref myst">official documentation</span></a>.<br />
+If you encounter any issues, feel free to open an <a class="reference external" href="https://github.com/qihang-zou/Cisformer/issues">issue</a>.</p>
+</section>
+<section id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading"></a></h2>
+<section id="miniconda3">
+<h3>Miniconda3<a class="headerlink" href="#miniconda3" title="Link to this heading"></a></h3>
+<p>We recommend using <a class="reference external" href="https://www.anaconda.com/docs/getting-started/miniconda/main">Miniconda3</a> or <a class="reference external" href="https://www.anaconda.com/">Anaconda</a> as the environment manager. Make sure <code class="docutils literal notranslate"><span class="pre">conda</span></code> is installed.</p>
+</section>
+<section id="creating-the-cisformer-environment">
+<h3>Creating the Cisformer Environment<a class="headerlink" href="#creating-the-cisformer-environment" title="Link to this heading"></a></h3>
+<p>To get started, copy <code class="docutils literal notranslate"><span class="pre">requirement.sh</span></code> to your local server and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>cisformer<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+conda<span class="w"> </span>activate<span class="w"> </span>cisformer
+bash<span class="w"> </span>./requirement.sh
+</pre></div>
+</div>
+<p>Alternatively, you can install dependencies manually:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>cisformer<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+conda<span class="w"> </span>activate<span class="w"> </span>cisformer
+conda<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">1</span>.23
+conda<span class="w"> </span>install<span class="w"> </span><span class="nv">pytorch</span><span class="o">=</span><span class="m">2</span>.2.1<span class="w"> </span><span class="nv">torchvision</span><span class="o">=</span><span class="m">0</span>.17.1<span class="w"> </span><span class="nv">torchaudio</span><span class="o">=</span><span class="m">2</span>.2.1<span class="w"> </span>pytorch-cuda<span class="o">=</span><span class="m">12</span>.1<span class="w"> </span>-c<span class="w"> </span>pytorch<span class="w"> </span>-c<span class="w"> </span>nvidia
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="nv">accelerate</span><span class="o">==</span><span class="m">0</span>.22.0
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>scanpy<span class="w"> </span>python-igraph<span class="w"> </span>leidenalg
+pip<span class="w"> </span>install<span class="w"> </span>ninja
+pip<span class="w"> </span>install<span class="w"> </span>flash-attn<span class="w"> </span>--no-build-isolation
+pip<span class="w"> </span>install<span class="w"> </span>torcheval
+conda<span class="w"> </span>install<span class="w"> </span>tensorboard
+conda<span class="w"> </span>install<span class="w"> </span>pybedtools
+</pre></div>
+</div>
+</section>
+</section>
+<section id="install-from-pypi">
+<h2>Install from PyPI<a class="headerlink" href="#install-from-pypi" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>cisformer
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h1>
+<section id="generate-default-config-files">
+<h2>Generate Default Config Files<a class="headerlink" href="#generate-default-config-files" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>generate_default_config
+</pre></div>
+</div>
+<p>This command will create a folder named <code class="docutils literal notranslate"><span class="pre">cisformer_config</span></code> in the current directory, containing the following config files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">accelerate_config.yaml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">atac2rna_config.yaml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rna2atac_config.yaml</span></code></p></li>
+</ul>
+<p>Cisformer uses <a class="reference external" href="https://huggingface.co/docs/accelerate/index">Hugging Face Accelerate</a> for distributed training. You may need to modify <code class="docutils literal notranslate"><span class="pre">cisformer_config/accelerate_config.yaml</span></code> based on your server setup. See <a class="reference external" href="https://huggingface.co/docs/accelerate/basic_tutorials/launch">Accelerate launch docs</a> for more information.</p>
+</section>
+<section id="rna-atac">
+<h2>RNA ➝ ATAC<a class="headerlink" href="#rna-atac" title="Link to this heading"></a></h2>
+<section id="configure-parameters-optional">
+<h3>1. Configure Parameters (Optional)<a class="headerlink" href="#configure-parameters-optional" title="Link to this heading"></a></h3>
+<p>Edit the RNA2ATAC configuration file:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cisformer_config/rna2atac_config.yaml</span></code><br />
+Refer to the <a class="reference internal" href="#"><span class="xref myst">documentation</span></a> for parameter explanations.</p></li>
+</ul>
+</section>
+<section id="data-preprocessing">
+<h3>2. Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Link to this heading"></a></h3>
+<p>Cisformer requires raw scRNA-seq and scATAC-seq data in <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/tutorials/index.html">Scanpy <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> format</a>.</p>
+<p>To preprocess:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>data_preprocess<span class="w"> </span>-r<span class="w"> </span>test_data/rna.h5ad<span class="w"> </span>-a<span class="w"> </span>test_data/atac.h5ad<span class="w"> </span>-s<span class="w"> </span>preprocessed_dataset
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span></code>: path to RNA <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code>: path to ATAC <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span></code>: output directory</p></li>
+</ul>
+<p>See the <a class="reference internal" href="#"><span class="xref myst">documentation</span></a> for additional options and output file details.</p>
+</section>
+<section id="model-training">
+<h3>3. Model Training<a class="headerlink" href="#model-training" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>rna2atac_train<span class="w"> </span>-t<span class="w"> </span>preprocessed_dataset/cisformer_rna2atac_train_dataset<span class="w"> </span>-v<span class="w"> </span>preprocessed_dataset/cisformer_rna2atac_val_dataset<span class="w"> </span>-n<span class="w"> </span>rna2atac_test
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>: path to training dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span></code>: path to validation dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>: project name</p></li>
+</ul>
+<p>A <code class="docutils literal notranslate"><span class="pre">save</span></code> directory will be created (or can be customized using <code class="docutils literal notranslate"><span class="pre">-s</span></code>). Inside, you'll find a folder like <code class="docutils literal notranslate"><span class="pre">2025-05-12_rna2atac_test</span></code>, which contains the trained models. Typically, the model from the last epoch performs best.</p>
+<p>Refer to the <a class="reference internal" href="#"><span class="xref myst">documentation</span></a> for more options and output explanations.</p>
+</section>
+<section id="prediction">
+<h3>4. Prediction<a class="headerlink" href="#prediction" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>rna2atac_predict<span class="w"> </span>-r<span class="w"> </span>preprocessed_dataset/test_rna.h5ad<span class="w"> </span>-m<span class="w"> </span>save/2025-05-12_rna2atac_test/epoch34/pytorch_model.bin
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span></code>: RNA <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> file for prediction</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>: trained model checkpoint</p></li>
+</ul>
+<p>The predicted ATAC matrix will be saved to <code class="docutils literal notranslate"><span class="pre">output/cisformer_predicted_atac.h5ad</span></code> by default.<br />
+See the <a class="reference internal" href="#"><span class="xref myst">documentation</span></a> for more.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="atac-rna">
+<h2>ATAC ➝ RNA<a class="headerlink" href="#atac-rna" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>1. Configure Parameters (Optional)<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Edit the ATAC2RNA configuration file:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cisformer_config/atac2rna_config.yaml</span></code></p></li>
+</ul>
+<p>See the <a class="reference internal" href="#"><span class="xref myst">documentation</span></a> for details.</p>
+</section>
+<section id="id2">
+<h3>2. Data Preprocessing<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>data_preprocess<span class="w"> </span>-r<span class="w"> </span>test_data/rna.h5ad<span class="w"> </span>-a<span class="w"> </span>test_data/atac.h5ad<span class="w"> </span>-s<span class="w"> </span>preprocessed_dataset<span class="w"> </span>--atac2rna
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--atac2rna</span></code> flag indicates this is for the ATAC2RNA direction<br />
+Other arguments are the same as in RNA2ATAC.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>3. Model Training<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>atac2rna_train<span class="w"> </span>-d<span class="w"> </span>preprocessed_dataset/cisformer_atac2rna_train_dataset<span class="w"> </span>-n<span class="w"> </span>atac2rna_test
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>: path to ATAC2RNA training dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>: project name</p></li>
+</ul>
+<p>A <code class="docutils literal notranslate"><span class="pre">save</span></code> directory will be created (or customized with <code class="docutils literal notranslate"><span class="pre">-s</span></code>). The folder <code class="docutils literal notranslate"><span class="pre">2025-05-12_atac2rna_test</span></code> will contain the trained model, with the final epoch model usually performing best.</p>
+</section>
+<section id="prediction-optional">
+<h3>4. Prediction (Optional)<a class="headerlink" href="#prediction-optional" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>atac2rna_predict<span class="w"> </span>-d<span class="w"> </span>preprocessed_dataset/cisformer_atac2rna_test_dataset/atac2rna_0.pt<span class="w"> </span>-m<span class="w"> </span>save/2025-05-12_atac2rna_test/epoch30/pytorch_model.bin
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>: path to test dataset <code class="docutils literal notranslate"><span class="pre">.pt</span></code> file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>: trained model checkpoint</p></li>
+</ul>
+<p>Output will be saved to <code class="docutils literal notranslate"><span class="pre">output/cisformer_predicted_rna.h5ad</span></code>.</p>
+</section>
+<section id="link-cis-regulators-and-genes">
+<h3>5. Link cis-regulators and Genes<a class="headerlink" href="#link-cis-regulators-and-genes" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>atac2rna_link<span class="w"> </span>-d<span class="w"> </span>preprocessed_dataset/cisformer_atac2rna_test_dataset/atac2rna_0.pt<span class="w"> </span>-m<span class="w"> </span>save/2025-05-12_atac2rna_test/epoch30/pytorch_model.bin<span class="w"> </span>-c<span class="w"> </span>test_data/celltype_info.tsv
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>: test <code class="docutils literal notranslate"><span class="pre">.pt</span></code> file (must be accompanied by <code class="docutils literal notranslate"><span class="pre">cell_info.tsv</span></code> in the same folder)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>: trained model</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>: TSV file mapping each cell barcode to a cell type (no header)</p></li>
+</ul>
+<p>Example of <code class="docutils literal notranslate"><span class="pre">celltype_info.tsv</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GTACCGGGTATACTGG</span><span class="o">-</span><span class="mi">1</span>	<span class="n">CD14</span> <span class="n">Mono</span>
+<span class="n">ACTGAATGTCACCAAA</span><span class="o">-</span><span class="mi">1</span>	<span class="n">cDC2</span>
+<span class="n">AACCTTGCAAACTGTT</span><span class="o">-</span><span class="mi">1</span>	<span class="n">CD14</span> <span class="n">Mono</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>The output folder <code class="docutils literal notranslate"><span class="pre">output/cisformer_link</span></code> will contain <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> files linking cis-regulators to genes for each cell type.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/Dao-AILab/flash-attention">flash-attention2</a></p></li>
+<li><p><a class="reference external" href="https://huggingface.co/">Hugging Face</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Cisformer&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Qihang Zou.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

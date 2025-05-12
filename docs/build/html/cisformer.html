@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="python" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cisformer package &mdash; cisformer 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=40be6288"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="cisformer.M2Mmodel package" href="cisformer.M2Mmodel.html" />
+    <link rel="prev" title="cisformer" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            cisformer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Translation of Single-Cell Data Across Modalities with <strong>Cisformer</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#about">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#environment-setup">Environment Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html#miniconda3">Miniconda3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#creating-the-cisformer-environment">Creating the Cisformer Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#install-from-pypi">Install from PyPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#quick-start">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#generate-default-config-files">Generate Default Config Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#rna-atac">RNA ➝ ATAC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html#configure-parameters-optional">1. Configure Parameters (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#data-preprocessing">2. Data Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#model-training">3. Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#prediction">4. Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#atac-rna">ATAC ➝ RNA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html#id1">1. Configure Parameters (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#id2">2. Data Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#id3">3. Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#prediction-optional">4. Prediction (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#link-cis-regulators-and-genes">5. Link cis-regulators and Genes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#using-pip-recommended">Using pip (recommended):</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#manual-installation">Manual Installation:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#generating-configuration-files">Generating Configuration Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#rna-atac-mode">RNA ➝ ATAC Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#atac-rna-mode">ATAC ➝ RNA Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">cisformer</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">cisformer package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html">cisformer.M2Mmodel package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer.atac2rna_predict">cisformer.atac2rna_predict module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_predict.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer.atac2rna_surround_attention_generate">cisformer.atac2rna_surround_attention_generate module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_surround_attention_generate.Info"><code class="docutils literal notranslate"><span class="pre">Info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_surround_attention_generate.combine_grange"><code class="docutils literal notranslate"><span class="pre">combine_grange()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_surround_attention_generate.comp"><code class="docutils literal notranslate"><span class="pre">comp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_surround_attention_generate.exists"><code class="docutils literal notranslate"><span class="pre">exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_surround_attention_generate.grange_intersect"><code class="docutils literal notranslate"><span class="pre">grange_intersect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_surround_attention_generate.granges2bed"><code class="docutils literal notranslate"><span class="pre">granges2bed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_surround_attention_generate.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_surround_attention_generate.read_result"><code class="docutils literal notranslate"><span class="pre">read_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_surround_attention_generate.split_grange"><code class="docutils literal notranslate"><span class="pre">split_grange()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer.atac2rna_train">cisformer.atac2rna_train module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_train.CrossEntropy_weight_computor"><code class="docutils literal notranslate"><span class="pre">CrossEntropy_weight_computor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.atac2rna_train.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer.compute_surround_enhancer">cisformer.compute_surround_enhancer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.compute_surround_enhancer.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer.data_preprocess">cisformer.data_preprocess module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.data_preprocess.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.data_preprocess.pair_data_process"><code class="docutils literal notranslate"><span class="pre">pair_data_process()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer.generate_default_config">cisformer.generate_default_config module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.generate_default_config.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer.map_rna_atac">cisformer.map_rna_atac module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.map_rna_atac.is_ens"><code class="docutils literal notranslate"><span class="pre">is_ens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.map_rna_atac.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer.rna2atac_predict">cisformer.rna2atac_predict module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.rna2atac_predict.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer.rna2atac_train">cisformer.rna2atac_train module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.rna2atac_train.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer.runner">cisformer.runner module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cisformer.runner.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cisformer">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">cisformer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">cisformer</a></li>
+      <li class="breadcrumb-item active">cisformer package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cisformer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cisformer-package">
+<h1>cisformer package<a class="headerlink" href="#cisformer-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cisformer.M2Mmodel.html">cisformer.M2Mmodel package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cisformer.M2Mmodel.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel.M2M">cisformer.M2Mmodel.M2M module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.Always"><code class="docutils literal notranslate"><span class="pre">Always</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.Always.forward"><code class="docutils literal notranslate"><span class="pre">Always.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.AtacLM"><code class="docutils literal notranslate"><span class="pre">AtacLM</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.AtacLM.forward"><code class="docutils literal notranslate"><span class="pre">AtacLM.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.DEC_PREFIX"><code class="docutils literal notranslate"><span class="pre">DEC_PREFIX</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.FixedPositionalEmbedding"><code class="docutils literal notranslate"><span class="pre">FixedPositionalEmbedding</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.FixedPositionalEmbedding.forward"><code class="docutils literal notranslate"><span class="pre">FixedPositionalEmbedding.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_atac2rna"><code class="docutils literal notranslate"><span class="pre">M2M_atac2rna</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_atac2rna.forward"><code class="docutils literal notranslate"><span class="pre">M2M_atac2rna.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_atac2rna.generate_attn_weight"><code class="docutils literal notranslate"><span class="pre">M2M_atac2rna.generate_attn_weight()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_rna2atac"><code class="docutils literal notranslate"><span class="pre">M2M_rna2atac</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_rna2atac.forward"><code class="docutils literal notranslate"><span class="pre">M2M_rna2atac.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.M2M_rna2atac.generate_attn_weight"><code class="docutils literal notranslate"><span class="pre">M2M_rna2atac.generate_attn_weight()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.Pass"><code class="docutils literal notranslate"><span class="pre">Pass</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.Pass.forward"><code class="docutils literal notranslate"><span class="pre">Pass.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.RnaLM"><code class="docutils literal notranslate"><span class="pre">RnaLM</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.RnaLM.forward"><code class="docutils literal notranslate"><span class="pre">RnaLM.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.cast_tuple"><code class="docutils literal notranslate"><span class="pre">cast_tuple()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.exists"><code class="docutils literal notranslate"><span class="pre">exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.extract_and_set_enc_dec_kwargs"><code class="docutils literal notranslate"><span class="pre">extract_and_set_enc_dec_kwargs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.extract_enc_dec_kwargs"><code class="docutils literal notranslate"><span class="pre">extract_enc_dec_kwargs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.group_by_key_prefix"><code class="docutils literal notranslate"><span class="pre">group_by_key_prefix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.group_by_key_prefix_and_remove_prefix"><code class="docutils literal notranslate"><span class="pre">group_by_key_prefix_and_remove_prefix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.group_dict_by_key"><code class="docutils literal notranslate"><span class="pre">group_dict_by_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.input_with_timeout"><code class="docutils literal notranslate"><span class="pre">input_with_timeout()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.string_begins_with"><code class="docutils literal notranslate"><span class="pre">string_begins_with()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.whole_attn_score_matrix"><code class="docutils literal notranslate"><span class="pre">whole_attn_score_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.M2M.whole_attn_score_matrix_generator"><code class="docutils literal notranslate"><span class="pre">whole_attn_score_matrix_generator()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel.block">cisformer.M2Mmodel.block module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Always"><code class="docutils literal notranslate"><span class="pre">Always</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Always.forward"><code class="docutils literal notranslate"><span class="pre">Always.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Attention"><code class="docutils literal notranslate"><span class="pre">Attention</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Attention.forward"><code class="docutils literal notranslate"><span class="pre">Attention.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Chunk"><code class="docutils literal notranslate"><span class="pre">Chunk</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.Chunk.forward"><code class="docutils literal notranslate"><span class="pre">Chunk.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.CrossAttention"><code class="docutils literal notranslate"><span class="pre">CrossAttention</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.CrossAttention.forward"><code class="docutils literal notranslate"><span class="pre">CrossAttention.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.FeedForward"><code class="docutils literal notranslate"><span class="pre">FeedForward</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.FeedForward.forward"><code class="docutils literal notranslate"><span class="pre">FeedForward.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreLayerNorm"><code class="docutils literal notranslate"><span class="pre">PreLayerNorm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreLayerNorm.forward"><code class="docutils literal notranslate"><span class="pre">PreLayerNorm.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreScaleNorm"><code class="docutils literal notranslate"><span class="pre">PreScaleNorm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreScaleNorm.forward"><code class="docutils literal notranslate"><span class="pre">PreScaleNorm.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreShiftTokens"><code class="docutils literal notranslate"><span class="pre">PreShiftTokens</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.PreShiftTokens.forward"><code class="docutils literal notranslate"><span class="pre">PreShiftTokens.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.ReZero"><code class="docutils literal notranslate"><span class="pre">ReZero</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.ReZero.forward"><code class="docutils literal notranslate"><span class="pre">ReZero.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.SelfAttention"><code class="docutils literal notranslate"><span class="pre">SelfAttention</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.SelfAttention.forward"><code class="docutils literal notranslate"><span class="pre">SelfAttention.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.SequentialSequence"><code class="docutils literal notranslate"><span class="pre">SequentialSequence</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.SequentialSequence.forward"><code class="docutils literal notranslate"><span class="pre">SequentialSequence.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.TransformerBlock"><code class="docutils literal notranslate"><span class="pre">TransformerBlock</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.TransformerBlock.forward"><code class="docutils literal notranslate"><span class="pre">TransformerBlock.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.apply_rotary_pos_emb"><code class="docutils literal notranslate"><span class="pre">apply_rotary_pos_emb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.default"><code class="docutils literal notranslate"><span class="pre">default()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.empty"><code class="docutils literal notranslate"><span class="pre">empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.exists"><code class="docutils literal notranslate"><span class="pre">exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.rotate_every_two"><code class="docutils literal notranslate"><span class="pre">rotate_every_two()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.route_args"><code class="docutils literal notranslate"><span class="pre">route_args()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.block.shift"><code class="docutils literal notranslate"><span class="pre">shift()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel.utils">cisformer.M2Mmodel.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.Accelerate_early_stop_helper"><code class="docutils literal notranslate"><span class="pre">Accelerate_early_stop_helper</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.Accelerate_early_stop_helper.set"><code class="docutils literal notranslate"><span class="pre">Accelerate_early_stop_helper.set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.Accelerate_early_stop_helper.should_break"><code class="docutils literal notranslate"><span class="pre">Accelerate_early_stop_helper.should_break()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.New_Accelerator"><code class="docutils literal notranslate"><span class="pre">New_Accelerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.New_Accelerator.free_dataloader"><code class="docutils literal notranslate"><span class="pre">New_Accelerator.free_dataloader()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.PairDataset"><code class="docutils literal notranslate"><span class="pre">PairDataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.PreDataset"><code class="docutils literal notranslate"><span class="pre">PreDataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.Rna2atacDataset"><code class="docutils literal notranslate"><span class="pre">Rna2atacDataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.binning"><code class="docutils literal notranslate"><span class="pre">binning()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.comb_sublist"><code class="docutils literal notranslate"><span class="pre">comb_sublist()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.exists"><code class="docutils literal notranslate"><span class="pre">exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.list_digit"><code class="docutils literal notranslate"><span class="pre">list_digit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.list_digit_back"><code class="docutils literal notranslate"><span class="pre">list_digit_back()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.load_data_path"><code class="docutils literal notranslate"><span class="pre">load_data_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.plot_attn_weight"><code class="docutils literal notranslate"><span class="pre">plot_attn_weight()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.select_least_used_gpu"><code class="docutils literal notranslate"><span class="pre">select_least_used_gpu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cisformer.M2Mmodel.html#cisformer.M2Mmodel.utils.setup_seed"><code class="docutils literal notranslate"><span class="pre">setup_seed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cisformer.M2Mmodel.html#module-cisformer.M2Mmodel">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-cisformer.atac2rna_predict">
+<span id="cisformer-atac2rna-predict-module"></span><h2>cisformer.atac2rna_predict module<a class="headerlink" href="#module-cisformer.atac2rna_predict" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_predict.main">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_predict.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_predict.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-cisformer.atac2rna_surround_attention_generate">
+<span id="cisformer-atac2rna-surround-attention-generate-module"></span><h2>cisformer.atac2rna_surround_attention_generate module<a class="headerlink" href="#module-cisformer.atac2rna_surround_attention_generate" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_surround_attention_generate.Info">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_surround_attention_generate.</span></span><span class="sig-name descname"><span class="pre">Info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_surround_attention_generate.Info" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_surround_attention_generate.combine_grange">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_surround_attention_generate.</span></span><span class="sig-name descname"><span class="pre">combine_grange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_surround_attention_generate.combine_grange" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_surround_attention_generate.comp">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_surround_attention_generate.</span></span><span class="sig-name descname"><span class="pre">comp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_links</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_surround_attention_generate.comp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_surround_attention_generate.exists">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_surround_attention_generate.</span></span><span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_surround_attention_generate.exists" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_surround_attention_generate.grange_intersect">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_surround_attention_generate.</span></span><span class="sig-name descname"><span class="pre">grange_intersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_surround_attention_generate.grange_intersect" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_surround_attention_generate.granges2bed">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_surround_attention_generate.</span></span><span class="sig-name descname"><span class="pre">granges2bed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">granges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_surround_attention_generate.granges2bed" title="Link to this definition"></a></dt>
+<dd><p>covert granges into bed format file
+:param granges: format like this: ['chr14:103715039-103715244', 'chr19:10518814-10518968']
+:type granges: iterable object
+:param output: name of output file
+:type output: str</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_surround_attention_generate.main">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_surround_attention_generate.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">celltype_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_cells</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_surround_attention_generate.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_surround_attention_generate.read_result">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_surround_attention_generate.</span></span><span class="sig-name descname"><span class="pre">read_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_surround_attention_generate.read_result" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_surround_attention_generate.split_grange">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_surround_attention_generate.</span></span><span class="sig-name descname"><span class="pre">split_grange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gene_coordinate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_surround_attention_generate.split_grange" title="Link to this definition"></a></dt>
+<dd><p>split genome range string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gene_coordinate</strong> (<em>str</em>) -- genome range information like: &quot;chr16:28931939-28939346&quot;</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>chr
+int: start_loc
+int: end_loc</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-cisformer.atac2rna_train">
+<span id="cisformer-atac2rna-train-module"></span><h2>cisformer.atac2rna_train module<a class="headerlink" href="#module-cisformer.atac2rna_train" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_train.CrossEntropy_weight_computor">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_train.</span></span><span class="sig-name descname"><span class="pre">CrossEntropy_weight_computor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_train.CrossEntropy_weight_computor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.atac2rna_train.main">
+<span class="sig-prename descclassname"><span class="pre">cisformer.atac2rna_train.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.atac2rna_train.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-cisformer.compute_surround_enhancer">
+<span id="cisformer-compute-surround-enhancer-module"></span><h2>cisformer.compute_surround_enhancer module<a class="headerlink" href="#module-cisformer.compute_surround_enhancer" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.compute_surround_enhancer.main">
+<span class="sig-prename descclassname"><span class="pre">cisformer.compute_surround_enhancer.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.compute_surround_enhancer.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-cisformer.data_preprocess">
+<span id="cisformer-data-preprocess-module"></span><h2>cisformer.data_preprocess module<a class="headerlink" href="#module-cisformer.data_preprocess" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.data_preprocess.main">
+<span class="sig-prename descclassname"><span class="pre">cisformer.data_preprocess.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rna</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manually</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atac2rna</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec_whole_length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.data_preprocess.main" title="Link to this definition"></a></dt>
+<dd><p>_summary_
+The shape and type of saved .pt files:
+Parent (list): rna_sequence, rna_value, atac_sequence, atac_value, enc_pad_mask
+Shape of child (tensor):
+rna_sequence: Cell number * multiple, sequence_len
+rna_value: Cell number * multiple, sequence_len
+atac_sequence: Cell number * multiple, sequence_len, digit(6)
+atac_value: Cell number * multiple, sequence_len
+enc_pad_mask: Cell number * multiple, sequence_len</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.data_preprocess.pair_data_process">
+<span class="sig-prename descclassname"><span class="pre">cisformer.data_preprocess.</span></span><span class="sig-name descname"><span class="pre">pair_data_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rna</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enc_max_len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec_max_len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rna_num_bin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atac2rna</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_raw_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.data_preprocess.pair_data_process" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-cisformer.generate_default_config">
+<span id="cisformer-generate-default-config-module"></span><h2>cisformer.generate_default_config module<a class="headerlink" href="#module-cisformer.generate_default_config" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.generate_default_config.main">
+<span class="sig-prename descclassname"><span class="pre">cisformer.generate_default_config.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.generate_default_config.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-cisformer.map_rna_atac">
+<span id="cisformer-map-rna-atac-module"></span><h2>cisformer.map_rna_atac module<a class="headerlink" href="#module-cisformer.map_rna_atac" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.map_rna_atac.is_ens">
+<span class="sig-prename descclassname"><span class="pre">cisformer.map_rna_atac.</span></span><span class="sig-name descname"><span class="pre">is_ens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gene_iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.map_rna_atac.is_ens" title="Link to this definition"></a></dt>
+<dd><p>Give a gene iterator, and return True if most of them are named by ENSEMBLE id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gene_iter</strong> (<em>iter</em>) -- Gene iterator. A list like object containing gene names</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.map_rna_atac.main">
+<span class="sig-prename descclassname"><span class="pre">cisformer.map_rna_atac.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rna_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atac_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2023</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">divide</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log1p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.map_rna_atac.main" title="Link to this definition"></a></dt>
+<dd><p>map rna and atac and divide them into train and test set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rna_file</strong> (<em>_type_</em>) -- _description_</p></li>
+<li><p><strong>atac_file</strong> (<em>_type_</em>) -- _description_</p></li>
+<li><p><strong>save_dir</strong> (<em>_type_</em><em>, </em><em>optional</em>) -- _description_. Defaults to None. By default it will use the path of atac file.</p></li>
+<li><p><strong>test_percent</strong> (<em>float</em><em>, </em><em>optional</em>) -- _description_. Defaults to 0.2.</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) -- _description_. Defaults to 2023.</p></li>
+<li><p><strong>divide</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Whether to split the dataset into train and test dataset. Defaults to True.</p></li>
+<li><p><strong>log1p</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Whether to normalize rna dataset by log1p.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-cisformer.rna2atac_predict">
+<span id="cisformer-rna2atac-predict-module"></span><h2>cisformer.rna2atac_predict module<a class="headerlink" href="#module-cisformer.rna2atac_predict" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.rna2atac_predict.main">
+<span class="sig-prename descclassname"><span class="pre">cisformer.rna2atac_predict.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.rna2atac_predict.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-cisformer.rna2atac_train">
+<span id="cisformer-rna2atac-train-module"></span><h2>cisformer.rna2atac_train module<a class="headerlink" href="#module-cisformer.rna2atac_train" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.rna2atac_train.main">
+<span class="sig-prename descclassname"><span class="pre">cisformer.rna2atac_train.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.rna2atac_train.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-cisformer.runner">
+<span id="cisformer-runner-module"></span><h2>cisformer.runner module<a class="headerlink" href="#module-cisformer.runner" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cisformer.runner.main">
+<span class="sig-prename descclassname"><span class="pre">cisformer.runner.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cisformer.runner.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-cisformer">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cisformer" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="cisformer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cisformer.M2Mmodel.html" class="btn btn-neutral float-right" title="cisformer.M2Mmodel package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Qihang Zou.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
