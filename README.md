@@ -9,7 +9,7 @@ To meet real-world application needs and improve model performance:
 - For the ATAC2RNA task, the model can generate pseudo-scRNA-seq data and construct a highly accurate cis-regulatory interaction matrix between cis-elements and genes.
 
 ## Documentation
-For detailed usage and examples, see the [official documentation]().  
+For detailed usage and examples, see the [official documentation](https://cisformer.readthedocs.io/en/latest/).  
 If you encounter any issues, feel free to open an [issue](https://github.com/qihang-zou/Cisformer/issues).
 
 ## Environment Setup
@@ -65,7 +65,7 @@ Cisformer uses [Hugging Face Accelerate](https://huggingface.co/docs/accelerate/
 Edit the RNA2ATAC configuration file:
 - `cisformer_config/rna2atac_config.yaml` 
 **It is recommanded to modify the parameter `multiple` to at least 40 to get a good performance.**
-Refer to the [documentation]() for parameter explanations.
+Refer to the [documentation](https://cisformer.readthedocs.io/en/latest/usage.html#rna2atac-config-yaml) for parameter explanations.
 
 ### 2. Data Preprocessing
 Cisformer requires raw scRNA-seq and scATAC-seq data in [Scanpy `.h5ad` format](https://scanpy.readthedocs.io/en/stable/tutorials/index.html).
@@ -78,7 +78,7 @@ cisformer data_preprocess -r test_data/rna.h5ad -a test_data/atac.h5ad -s prepro
 - `-a`: path to ATAC `.h5ad` file  
 - `-s`: output directory  
 
-See the [documentation]() for additional options and output file details.
+See the [documentation](https://cisformer.readthedocs.io/en/latest/usage.html#data-preprocess) for additional options and output file details.
 
 ### 3. Model Training
 ```bash
@@ -90,7 +90,7 @@ cisformer rna2atac_train -t preprocessed_dataset/cisformer_rna2atac_train_datase
 
 A `save` directory will be created (or can be customized using `-s`). Inside, you'll find a folder like `2025-05-12_rna2atac_test`, which contains the trained models. Typically, the model from the last epoch performs best.
 
-Refer to the [documentation]() for more options and output explanations.
+Refer to the [documentation](https://cisformer.readthedocs.io/en/latest/usage.html#rna2atac-train) for more options and output explanations.
 
 ### 4. Prediction
 ```bash
@@ -99,8 +99,9 @@ cisformer rna2atac_predict -r preprocessed_dataset/test_rna.h5ad -m save/2025-05
 - `-r`: RNA `.h5ad` file for prediction  
 - `-m`: trained model checkpoint
 
-The predicted ATAC matrix will be saved to `output/cisformer_predicted_atac.h5ad` by default.  
-See the [documentation]() for more.
+The predicted ATAC matrix will be saved to `output/cisformer_predicted_atac.h5ad` by default.
+
+Refer to the [documentation](https://cisformer.readthedocs.io/en/latest/usage.html#rna2atac-predict) for more options and output explanations.
 
 ---
 
@@ -110,7 +111,7 @@ See the [documentation]() for more.
 Edit the ATAC2RNA configuration file:
 - `cisformer_config/atac2rna_config.yaml`
 
-See the [documentation]() for details.
+Refer to the [documentation](https://cisformer.readthedocs.io/en/latest/usage.html#atac2rna-config-yaml) for parameter explanations.
 
 ### 2. Data Preprocessing
 ```bash
@@ -118,6 +119,9 @@ cisformer data_preprocess -r test_data/rna.h5ad -a test_data/atac.h5ad -s prepro
 ```
 - `--atac2rna` flag indicates this is for the ATAC2RNA direction  
 Other arguments are the same as in RNA2ATAC.
+
+See the [documentation](https://cisformer.readthedocs.io/en/latest/usage.html#data-preprocess) for additional options and output file details.
+
 
 ### 3. Model Training
 ```bash
@@ -128,6 +132,8 @@ cisformer atac2rna_train -d preprocessed_dataset/cisformer_atac2rna_train_datase
 
 A `save` directory will be created (or customized with `-s`). The folder `2025-05-12_atac2rna_test` will contain the trained model, with the final epoch model usually performing best.
 
+Refer to the [documentation](https://cisformer.readthedocs.io/en/latest/usage.html#atac2rna-train) for more options and output explanations.
+
 ### 4. Prediction (Optional)
 ```bash
 cisformer atac2rna_predict -d preprocessed_dataset/cisformer_atac2rna_test_dataset/atac2rna_0.pt -m save/2025-05-12_atac2rna_test/epoch30/pytorch_model.bin
@@ -136,6 +142,8 @@ cisformer atac2rna_predict -d preprocessed_dataset/cisformer_atac2rna_test_datas
 - `-m`: trained model checkpoint
 
 Output will be saved to `output/cisformer_predicted_rna.h5ad`.
+
+Refer to the [documentation](https://cisformer.readthedocs.io/en/latest/usage.html#atac2rna-predict) for more options and output explanations.
 
 ### 5. Link cis-regulators and Genes
 ```bash
@@ -154,6 +162,8 @@ AACCTTGCAAACTGTT-1	CD14 Mono
 ```
 
 The output folder `output/cisformer_link` will contain `.h5ad` files linking cis-regulators to genes for each cell type.
+
+Refer to the [documentation](https://cisformer.readthedocs.io/en/latest/usage.html#atac2rna-link) for more options and output explanations.
 
 ---
 
