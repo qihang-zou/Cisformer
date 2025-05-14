@@ -6,5 +6,4 @@ preprocessed_dataset/
 save/
 cisformer/resource/gene_surround_enhancers_250kbp_idx.pkl
 cisformer/resource/gene_surround_enhancers_250kbp.pkl
-cisformer/__pycache__
-cisformer/M2Mmodel/__pycache__
+*/__pycache__
