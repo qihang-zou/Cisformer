@@ -63,7 +63,8 @@ Cisformer uses [Hugging Face Accelerate](https://huggingface.co/docs/accelerate/
 
 ### 1. Configure Parameters (Optional)
 Edit the RNA2ATAC configuration file:
-- `cisformer_config/rna2atac_config.yaml`  
+- `cisformer_config/rna2atac_config.yaml` 
+**It is recommanded to modify the parameter `multiple` to at least 40 to get a good performance.**
 Refer to the [documentation]() for parameter explanations.
 
 ### 2. Data Preprocessing

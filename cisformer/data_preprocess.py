@@ -95,7 +95,7 @@ def pair_data_process(rna,
                 os.path.join(save_dir, file_name + "_" + str(num) + ".pt"))
 
 
-def main(rna, atac, manually, atac2rna, save_dir, config, batch_size, num_workers, cnt, shuffle, dec_whole_length):
+def main(rna, atac, manually, atac2rna, save_dir, config, batch_size, num_workers, cnt, shuffle):
     """_summary_
     The shape and type of saved .pt files:
     Parent (list): rna_sequence, rna_value, atac_sequence, atac_value, enc_pad_mask
@@ -224,7 +224,7 @@ def main(rna, atac, manually, atac2rna, save_dir, config, batch_size, num_worker
         pair_data_process(rna, 
                           atac,
                           enc_max_len = config["datapreprocess"]['enc_max_len'], 
-                          dec_max_len = config["datapreprocess"]['dec_max_len'] if not dec_whole_length else "whole", 
+                          dec_max_len = config["datapreprocess"]['dec_max_len'], 
                           shuffle = shuffle, 
                           save_dir = save_dir,
                           cnt= cnt,

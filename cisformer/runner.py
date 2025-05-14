@@ -33,7 +33,7 @@ def main():
     preprocess_parser.add_argument("--atac2rna", action="store_true", help="Process ATAC to RNA")
     preprocess_parser.add_argument("--manually", action="store_true", help="Manual mode")
     preprocess_parser.add_argument("--shuffle", action="store_true", help="Shuffle data")
-    preprocess_parser.add_argument("--dec_whole_length", action="store_true", help="Decode whole length")
+    # preprocess_parser.add_argument("--dec_whole_length", action="store_true", help="Decode whole length")
 
     # atac2rna_train
     train_a2r = subparsers.add_parser("atac2rna_train", help="Train ATAC to RNA model")
@@ -77,9 +77,9 @@ def main():
     predict_r2a.add_argument("-o", "--output_dir", default="output", help="Load model")
     predict_r2a.add_argument("-n", "--name", default="cisformer_predicted_atac", help="Load model")
     predict_r2a.add_argument("-c", "--config_file", default="cisformer_config/rna2atac_config.yaml", help="Config file")
-    predict_r2a.add_argument("--rna_len", default=3600, help="Load model")
-    predict_r2a.add_argument("--batch_size", default=2, help="Load model")
-    predict_r2a.add_argument("--num_workers", default=2, help="Load model")
+    predict_r2a.add_argument("--rna_len", default=3600, help="Number of non-zero expressed gene in used")
+    predict_r2a.add_argument("--batch_size", default=2, help="Batch size")
+    predict_r2a.add_argument("--num_workers", default=2, help="Number of workers")
 
     args = parser.parse_args()
 
@@ -90,7 +90,7 @@ def main():
         data_preprocess_module.main(
             args.rna, args.atac, args.manually, args.atac2rna, args.save_dir,
             args.config, args.batch_size, args.num_workers, args.cnt,
-            args.shuffle, args.dec_whole_length
+            args.shuffle
         )
 
     elif args.command == "atac2rna_train":

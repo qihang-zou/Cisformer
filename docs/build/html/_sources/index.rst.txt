@@ -9,13 +9,15 @@ Welcome to Cisformer's documentation!
 Cisformer is a novel Transformer-based deep learning framework for cross-modal prediction and regulatory inference in single-cell data.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
-   README.md
-   installation
-   usage
+   conception.md
+   installation.md
+   quickstart.md
+   usage.md
    modules
+   release.md
 
 Indices and tables
 ==================

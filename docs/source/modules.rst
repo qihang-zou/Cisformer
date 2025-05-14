@@ -1,5 +1,5 @@
-cisformer
-=========
+Detailed Function Composition
+=============================
 
 .. toctree::
    :maxdepth: 4

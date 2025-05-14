@@ -6,21 +6,21 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quick Start &mdash; cisformer 1.0.0 documentation</title>
+  <title>Usage &mdash; cisformer 1.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=40be6288"></script>
+      <script src="_static/documentation_options.js?v=bdce5dce"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="cisformer" href="modules.html" />
-    <link rel="prev" title="Installation Guide" href="installation.html" /> 
+    <link rel="next" title="Detailed Function Composition" href="modules.html" />
+    <link rel="prev" title="Quick Start" href="quickstart.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,49 +44,48 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="README.html">Translation of Single-Cell Data Across Modalities with <strong>Cisformer</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="README.html#about">About</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#documentation">Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#environment-setup">Environment Setup</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="README.html#miniconda3">Miniconda3</a></li>
-<li class="toctree-l3"><a class="reference internal" href="README.html#creating-the-cisformer-environment">Creating the Cisformer Environment</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#install-from-pypi">Install from PyPI</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="README.html#quick-start">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="README.html#generate-default-config-files">Generate Default Config Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#rna-atac">RNA ➝ ATAC</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="README.html#configure-parameters-optional">1. Configure Parameters (Optional)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="README.html#data-preprocessing">2. Data Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="README.html#model-training">3. Model Training</a></li>
-<li class="toctree-l3"><a class="reference internal" href="README.html#prediction">4. Prediction</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#atac-rna">ATAC ➝ RNA</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="README.html#id1">1. Configure Parameters (Optional)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="README.html#id2">2. Data Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="README.html#id3">3. Model Training</a></li>
-<li class="toctree-l3"><a class="reference internal" href="README.html#prediction-optional">4. Prediction (Optional)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="README.html#link-cis-regulators-and-genes">5. Link cis-regulators and Genes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#acknowledgements">Acknowledgements</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="conception.html">Conception</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#using-pip-recommended">Using pip (recommended):</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#manual-installation">Manual Installation:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#miniconda3">Miniconda3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#creating-the-cisformer-environment">Creating the Cisformer Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#install-from-pypi">Install from PyPI</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#generating-configuration-files">Generating Configuration Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#rna-atac-mode">RNA ➝ ATAC Mode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#atac-rna-mode">ATAC ➝ RNA Mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#generate-default-config-files">Generate Default Config Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#rna-atac">RNA ➝ ATAC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#configure-parameters-optional">1. Configure Parameters (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#preprocess-data">2. Preprocess Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#train-the-model">3. Train the Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#run-prediction">4. Run Prediction</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">cisformer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#atac-rna">ATAC ➝ RNA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#id1">1. Configure Parameters (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#id2">2. Preprocess Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#id3">3. Train the Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#run-prediction-optional">4. Run Prediction (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#link-cis-regulatory-elements-to-genes">5. Link Cis-Regulatory Elements to Genes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#generate-default-config">generate_default_config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#accelerate-config-yaml">accelerate_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#atac2rna-config-yaml">atac2rna_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rna2atac-config-yaml">rna2atac_config.yaml</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-preprocess">data_preprocess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#atac2rna-train">atac2rna_train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#atac2rna-predict">atac2rna_predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#atac2rna-link">atac2rna_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rna2atac-train">rna2atac_train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rna2atac-predict">rna2atac_predict</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Detailed Function Composition</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="cisformer.html">cisformer package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="cisformer.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="cisformer.M2Mmodel.html">cisformer.M2Mmodel package</a></li>
@@ -165,9 +164,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Quick Start</li>
+      <li class="breadcrumb-item active">Usage</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/usage.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -175,64 +174,532 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="quick-start">
-<h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h1>
-<section id="generating-configuration-files">
-<h2>Generating Configuration Files<a class="headerlink" href="#generating-configuration-files" title="Link to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>generate_default_config
-</pre></div>
-</div>
-<p>This creates a <cite>cisformer_config/</cite> directory with three config files:
-- accelerate_config.yaml
-- rna2atac_config.yaml
-- atac2rna_config.yaml</p>
-<p>Refer to <cite>accelerate</cite> documentation for distributed setup if needed.</p>
-</section>
-<section id="rna-atac-mode">
-<h2>RNA ➝ ATAC Mode<a class="headerlink" href="#rna-atac-mode" title="Link to this heading"></a></h2>
+  <section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h1>
+<p>Cisformer is primarily designed to perform two tasks:</p>
 <ol class="arabic simple">
-<li><p>Preprocessing:</p></li>
+<li><p><strong>Cross-modal prediction</strong>: Accurately and efficiently predict chromatin accessibility (ATAC) from gene expression (RNA), and vice versa.</p></li>
+<li><p><strong>Cis-regulatory inference</strong>: Use the relatively simple ATAC ➝ RNA prediction task to identify meaningful links between cis-regulatory elements (cCREs) and their target genes.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>data_preprocess<span class="w"> </span>-r<span class="w"> </span>test_data/rna.h5ad<span class="w"> </span>-a<span class="w"> </span>test_data/atac.h5ad<span class="w"> </span>-s<span class="w"> </span>preprocessed_dataset
+<p>To support these functionalities, Cisformer provides six main commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>usage:<span class="w"> </span>cisformer<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
+<span class="w">       </span><span class="o">{</span>generate_default_config,data_preprocess,atac2rna_train,atac2rna_predict,atac2rna_link,rna2atac_train,rna2atac_predict<span class="o">}</span>
+<span class="w">       </span>...
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Training:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>rna2atac_train<span class="w"> </span>-t<span class="w"> </span>preprocessed_dataset/cisformer_rna2atac_train_dataset<span class="w"> </span>-v<span class="w"> </span>preprocessed_dataset/cisformer_rna2atac_val_dataset<span class="w"> </span>-n<span class="w"> </span>rna2atac_test
+<p><strong>Available Subcommands:</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Subcommand</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">generate_default_config</span></code></p></td>
+<td><p>Generate default config files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">data_preprocess</span></code></p></td>
+<td><p>Preprocess RNA/ATAC data</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">atac2rna_train</span></code></p></td>
+<td><p>Train ATAC ➝ RNA prediction model</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">atac2rna_predict</span></code></p></td>
+<td><p>Predict gene expression from ATAC</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">atac2rna_link</span></code></p></td>
+<td><p>Extract cCRE–gene regulatory links</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rna2atac_train</span></code></p></td>
+<td><p>Train RNA ➝ ATAC prediction model</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rna2atac_predict</span></code></p></td>
+<td><p>Predict chromatin accessibility from RNA</p></td>
+</tr>
+</tbody>
+</table>
+<p>Detailed usages are listed as follows:</p>
+<hr class="docutils" />
+<section id="generate-default-config">
+<h2>generate_default_config<a class="headerlink" href="#generate-default-config" title="Link to this heading"></a></h2>
+<p>This command generates default configuration files required for later steps.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>usage:<span class="w"> </span>cisformer<span class="w"> </span>generate_default_config<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p>Prediction:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>rna2atac_predict<span class="w"> </span>-r<span class="w"> </span>preprocessed_dataset/test_rna.h5ad<span class="w"> </span>-m<span class="w"> </span>save/2025-05-12_rna2atac_test/epoch34/pytorch_model.bin
+<p><strong>Arguments:</strong> None</p>
+<p>After execution, a new directory named <code class="docutils literal notranslate"><span class="pre">cisformer_config</span></code> will be created in the current working directory. It contains the following three configuration files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">accelerate_config.yaml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">atac2rna_config.yaml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rna2atac_config.yaml</span></code></p></li>
+</ul>
+<section id="accelerate-config-yaml">
+<h3>accelerate_config.yaml<a class="headerlink" href="#accelerate-config-yaml" title="Link to this heading"></a></h3>
+<p>This is the configuration file for <a class="reference external" href="https://huggingface.co/docs/accelerate/index">Hugging Face Accelerate</a>, which Cisformer uses for distributed training. Example content:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;compute_environment&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;LOCAL_MACHINE&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;debug&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;distributed_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;MULTI_GPU&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;downcast_bf16&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;gpu_ids&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1,2&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;machine_rank&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;main_training_function&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;mixed_precision&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;fp16&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;num_machines&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;num_processes&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;rdzv_backend&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;static&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;same_network&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;tpu_use_cluster&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;tpu_use_sudo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;use_cpu&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;main_process_port&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">29934</span>
+<span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>You typically only need to modify:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;gpu_ids&quot;</span></code>: GPU device IDs to use.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;main_process_port&quot;</span></code>: Use a unique port if running multiple distributed jobs.</p></li>
+</ul>
+<p>See the <a class="reference external" href="https://huggingface.co/docs/accelerate/basic_tutorials/launch">Accelerate launch guide</a> for further instructions.</p>
+</section>
+<hr class="docutils" />
+<section id="atac2rna-config-yaml">
+<h3>atac2rna_config.yaml<a class="headerlink" href="#atac2rna-config-yaml" title="Link to this heading"></a></h3>
+<p>This file defines parameters for the ATAC ➝ RNA prediction task.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">datapreprocess</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enc_max_len</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10000</span>
+<span class="w">  </span><span class="nt">dec_max_len</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000</span>
+<span class="w">  </span><span class="nt">multiple</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">total_gene</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">38244</span>
+<span class="w">  </span><span class="nt">max_express</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
+<span class="w">  </span><span class="nt">dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">280</span>
+<span class="w">  </span><span class="nt">dec_depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">dec_heads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
+<span class="w">  </span><span class="nt">dec_ff_mult</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">dec_dim_head</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">140</span>
+<span class="w">  </span><span class="nt">dec_emb_dropout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">  </span><span class="nt">dec_ff_dropout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">  </span><span class="nt">dec_attn_dropout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+
+<span class="nt">training</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">SEED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2023</span>
+<span class="w">  </span><span class="nt">batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">96</span>
+<span class="w">  </span><span class="nt">num_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">epoch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">  </span><span class="nt">lr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5e-4</span>
+<span class="w">  </span><span class="nt">gamma_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">gamma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span>
+<span class="w">  </span><span class="nt">patience</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</pre></div>
+</div>
+<p><strong>Recommended Parameters</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enc_max_len</span></code></p></td>
+<td><p>Max number of expressed cCREs to consider. Higher values improve performance but consume more GPU memory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dec_max_len</span></code></p></td>
+<td><p>Max number of predicted genes. Larger values improve accuracy (especially during inference) but increase GPU usage.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">multiple</span></code></p></td>
+<td><p>Number of times to resample input–output pairs per cell. This increases training diversity without using more memory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_express</span></code></p></td>
+<td><p>The top-N gene expression ranks to predict. Larger values produce more detailed results and attention scores.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></p></td>
+<td><p>Number of cells per training batch. Adjust based on memory constraints.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">patience</span></code></p></td>
+<td><p>Early stopping patience: training stops if validation loss doesn't improve after this many epochs.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="rna2atac-config-yaml">
+<h3>rna2atac_config.yaml<a class="headerlink" href="#rna2atac-config-yaml" title="Link to this heading"></a></h3>
+<p>This file defines parameters for the RNA ➝ ATAC prediction task.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">datapreprocess</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enc_max_len</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2048</span>
+<span class="w">  </span><span class="nt">dec_max_len</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2048</span>
+<span class="w">  </span><span class="nt">multiple</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40</span><span class="w"> </span><span class="c1"># Recommend: ≥40</span>
+
+<span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">total_gene</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">38244</span>
+<span class="w">  </span><span class="nt">max_express</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64</span>
+<span class="w">  </span><span class="nt">dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">210</span>
+<span class="w">  </span><span class="nt">dec_depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<span class="w">  </span><span class="nt">dec_heads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<span class="w">  </span><span class="nt">dec_ff_mult</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">dec_dim_head</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128</span>
+<span class="w">  </span><span class="nt">dec_emb_dropout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">  </span><span class="nt">dec_ff_dropout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">  </span><span class="nt">dec_attn_dropout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+
+<span class="nt">training</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">SEED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="w">  </span><span class="nt">num_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">epoch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500</span>
+<span class="w">  </span><span class="nt">lr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1e-3</span>
+<span class="w">  </span><span class="nt">gamma_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">  </span><span class="nt">gamma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
+<span class="w">  </span><span class="nt">patience</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</pre></div>
+</div>
+<p><strong>Recommended Parameters</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enc_max_len</span></code></p></td>
+<td><p>Max number of input genes to consider. Larger values improve performance but use more memory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dec_max_len</span></code></p></td>
+<td><p>Max number of predicted cCREs during training. High values increase memory usage.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">multiple</span></code></p></td>
+<td><p>Number of times to sample gene/cCRE pairs per cell. Helps cover more loci without raising memory load. <strong>Recommended ≥ 40</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_express</span></code></p></td>
+<td><p>Maximum expression value range considered. Higher values give better results.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></p></td>
+<td><p>Number of cells per training batch. Tune based on available memory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">patience</span></code></p></td>
+<td><p>Early stopping patience. Training ends early if no improvement on validation loss.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="data-preprocess">
+<h2>data_preprocess<a class="headerlink" href="#data-preprocess" title="Link to this heading"></a></h2>
+<p>This command is used to preprocess paired RNA and ATAC data for model training or inference.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cisformer</span> <span class="n">data_preprocess</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">r</span> <span class="n">RNA</span> <span class="o">-</span><span class="n">a</span> <span class="n">ATAC</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="n">SAVE_DIR</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">cnt</span> <span class="n">CNT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">batch_size</span> <span class="n">BATCH_SIZE</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">num_workers</span> <span class="n">NUM_WORKERS</span><span class="p">]</span>
+                                 <span class="p">[</span><span class="o">--</span><span class="n">atac2rna</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">manually</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">shuffle</span><span class="p">]</span>
+
+<span class="n">options</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">r</span> <span class="n">RNA</span><span class="p">,</span> <span class="o">--</span><span class="n">rna</span> <span class="n">RNA</span>     <span class="n">Should</span> <span class="n">be</span> <span class="o">.</span><span class="n">h5ad</span> <span class="nb">format</span>
+  <span class="o">-</span><span class="n">a</span> <span class="n">ATAC</span><span class="p">,</span> <span class="o">--</span><span class="n">atac</span> <span class="n">ATAC</span>  <span class="n">Should</span> <span class="n">be</span> <span class="o">.</span><span class="n">h5ad</span> <span class="nb">format</span>
+  <span class="o">-</span><span class="n">c</span> <span class="n">CONFIG</span><span class="p">,</span> <span class="o">--</span><span class="n">config</span> <span class="n">CONFIG</span>
+                        <span class="n">Config</span> <span class="n">file</span>
+  <span class="o">-</span><span class="n">s</span> <span class="n">SAVE_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">save_dir</span> <span class="n">SAVE_DIR</span>
+                        <span class="n">Save</span> <span class="n">directory</span>
+  <span class="o">--</span><span class="n">cnt</span> <span class="n">CNT</span>             <span class="n">Number</span> <span class="n">of</span> <span class="n">cells</span> <span class="n">per</span> <span class="n">output</span> <span class="n">file</span>
+  <span class="o">--</span><span class="n">batch_size</span> <span class="n">BATCH_SIZE</span>
+                        <span class="n">Batch</span> <span class="n">size</span>
+  <span class="o">--</span><span class="n">num_workers</span> <span class="n">NUM_WORKERS</span>
+                        <span class="n">Number</span> <span class="n">of</span> <span class="n">workers</span>
+  <span class="o">--</span><span class="n">atac2rna</span>            <span class="n">Process</span> <span class="n">ATAC</span> <span class="n">to</span> <span class="n">RNA</span>
+  <span class="o">--</span><span class="n">manually</span>            <span class="n">Manual</span> <span class="n">mode</span>
+  <span class="o">--</span><span class="n">shuffle</span>             <span class="n">Shuffle</span> <span class="n">data</span>
+</pre></div>
+</div>
+<p><strong>Required arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span></code>: Input RNA expression matrix in <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> format (AnnData object).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code>: Input binary ATAC accessibility matrix in <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> format.</p></li>
+</ul>
+<blockquote>
+<div><p>⚠️ Note: Cell barcodes in RNA and ATAC files must match, though they can be in different orders.</p>
+</div></blockquote>
+<p><strong>Optional arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>: Path to the config file. Defaults to <code class="docutils literal notranslate"><span class="pre">cisformer_config/rna2atac_config.yaml</span></code> or <code class="docutils literal notranslate"><span class="pre">atac2rna_config.yaml</span></code> depending on direction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span></code>: Output directory to save preprocessed files. Defaults to the current working directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--cnt</span></code>: Maximum number of cells per output <code class="docutils literal notranslate"><span class="pre">.pt</span></code> file. A high number may increase memory usage and reduce file I/O efficiency. Default is 10000 (applies to training sets only).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--batch_size</span></code>: Number of cells processed per iteration. Default is 10. Adjust according to available memory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--num_workers</span></code>: Number of parallel workers used for processing. Default is 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--atac2rna</span></code>: By default, preprocessing is done in the RNA-to-ATAC direction. Use this flag to switch to ATAC-to-RNA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--manually</span></code>: Disables automatic train/val/test splitting (default 8:2) and prevents automatic setting of <code class="docutils literal notranslate"><span class="pre">multiple=1</span></code> in config for val/test sets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--shuffle</span></code>: If set, cell order in the dataset will be randomized (with identical shuffling for ATAC and RNA to preserve pairing). This improves model training performance but is <strong>not recommended for test sets</strong> as it breaks barcode alignment required for downstream analysis.</p></li>
+</ul>
+<blockquote>
+<div><p>💡 If <code class="docutils literal notranslate"><span class="pre">--shuffle</span></code> is not set, a <code class="docutils literal notranslate"><span class="pre">cell_info.tsv</span></code> file will be generated, which is required for downstream steps.</p>
+</div></blockquote>
+<p><strong>Recommended usage</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>data_preprocess<span class="w"> </span>-r<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span><span class="o">[</span>--atac2rna<span class="o">]</span>
 </pre></div>
 </div>
 </section>
-<section id="atac-rna-mode">
-<h2>ATAC ➝ RNA Mode<a class="headerlink" href="#atac-rna-mode" title="Link to this heading"></a></h2>
-<ol class="arabic simple">
-<li><p>Preprocessing:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>data_preprocess<span class="w"> </span>-r<span class="w"> </span>test_data/rna.h5ad<span class="w"> </span>-a<span class="w"> </span>test_data/atac.h5ad<span class="w"> </span>-s<span class="w"> </span>preprocessed_dataset<span class="w"> </span>--atac2rna
+<hr class="docutils" />
+<section id="atac2rna-train">
+<h2>atac2rna_train<a class="headerlink" href="#atac2rna-train" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cisformer</span> <span class="n">atac2rna_train</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">d</span> <span class="n">DATA_DIR</span> <span class="o">-</span><span class="n">n</span> <span class="n">NAME</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="n">SAVE</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG_FILE</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">m</span> <span class="n">MODEL_PARAMETERS</span><span class="p">]</span>
+
+<span class="n">options</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">d</span> <span class="n">DATA_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">data_dir</span> <span class="n">DATA_DIR</span>
+                        <span class="n">Data</span> <span class="n">directory</span>
+  <span class="o">-</span><span class="n">n</span> <span class="n">NAME</span><span class="p">,</span> <span class="o">--</span><span class="n">name</span> <span class="n">NAME</span>  <span class="n">Project</span> <span class="n">name</span>
+  <span class="o">-</span><span class="n">s</span> <span class="n">SAVE</span><span class="p">,</span> <span class="o">--</span><span class="n">save</span> <span class="n">SAVE</span>  <span class="n">Save</span> <span class="n">directory</span>
+  <span class="o">-</span><span class="n">c</span> <span class="n">CONFIG_FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">config_file</span> <span class="n">CONFIG_FILE</span>
+                        <span class="n">Config</span> <span class="n">file</span>
+  <span class="o">-</span><span class="n">m</span> <span class="n">MODEL_PARAMETERS</span><span class="p">,</span> <span class="o">--</span><span class="n">model_parameters</span> <span class="n">MODEL_PARAMETERS</span>
+                        <span class="n">Load</span> <span class="n">previous</span> <span class="n">model</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Training:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>atac2rna_train<span class="w"> </span>-d<span class="w"> </span>preprocessed_dataset/cisformer_atac2rna_train_dataset<span class="w"> </span>-n<span class="w"> </span>atac2rna_test
+<p><strong>Function overview</strong></p>
+<p>This command trains the ATAC-to-RNA prediction model using the preprocessed dataset.</p>
+<p><strong>Required arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>: Path to the directory containing the preprocessed training <code class="docutils literal notranslate"><span class="pre">.pt</span></code> files (generated by <code class="docutils literal notranslate"><span class="pre">data_preprocess</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>: Project name. The final model directory will be named using this project name and training timestamp.</p></li>
+</ul>
+<p><strong>Optional arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span></code>: Output directory to save trained model weights. Defaults to <code class="docutils literal notranslate"><span class="pre">./save</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>: Model config file. Defaults to <code class="docutils literal notranslate"><span class="pre">cisformer_config/atac2rna_config.yaml</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>: Path to previously trained model parameters to resume training. Configs must match the current run.</p></li>
+</ul>
+<p><strong>Recommended usage</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>atac2rna_train<span class="w"> </span>-d<span class="w"> </span>-n<span class="w"> </span>-s
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p>Prediction:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>atac2rna_predict<span class="w"> </span>-d<span class="w"> </span>preprocessed_dataset/cisformer_atac2rna_test_dataset/atac2rna_0.pt<span class="w"> </span>-m<span class="w"> </span>save/2025-05-12_atac2rna_test/epoch30/pytorch_model.bin
+<blockquote>
+<div><p>💡 Model weights are saved at the end of every epoch. The best-performing model is usually from the last epoch.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="atac2rna-predict">
+<h2>atac2rna_predict<a class="headerlink" href="#atac2rna-predict" title="Link to this heading"></a></h2>
+<p>This command uses a trained ATAC-to-RNA model to perform RNA expression prediction on preprocessed ATAC test data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cisformer</span> <span class="n">atac2rna_predict</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">d</span> <span class="n">DATA</span> <span class="o">-</span><span class="n">m</span> <span class="n">MODEL_PARAMETERS</span> <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_DIR</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">NAME</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG_FILE</span><span class="p">]</span>
+
+<span class="n">options</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">d</span> <span class="n">DATA</span><span class="p">,</span> <span class="o">--</span><span class="n">data</span> <span class="n">DATA</span>  <span class="n">Data</span> <span class="n">file</span>
+  <span class="o">-</span><span class="n">m</span> <span class="n">MODEL_PARAMETERS</span><span class="p">,</span> <span class="o">--</span><span class="n">model_parameters</span> <span class="n">MODEL_PARAMETERS</span>
+                        <span class="n">Previous</span> <span class="n">trained</span> <span class="n">model</span> <span class="n">parameters</span>
+  <span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">output_dir</span> <span class="n">OUTPUT_DIR</span>
+                        <span class="n">Output</span> <span class="n">directory</span>
+  <span class="o">-</span><span class="n">n</span> <span class="n">NAME</span><span class="p">,</span> <span class="o">--</span><span class="n">name</span> <span class="n">NAME</span>  <span class="n">Output</span> <span class="n">name</span>
+  <span class="o">-</span><span class="n">c</span> <span class="n">CONFIG_FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">config_file</span> <span class="n">CONFIG_FILE</span>
+                        <span class="n">Config</span> <span class="n">file</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
-<li><p>Linking Cis-Regulators and Genes:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>atac2rna_link<span class="w"> </span>-d<span class="w"> </span>preprocessed_dataset/cisformer_atac2rna_test_dataset/atac2rna_0.pt<span class="w"> </span>-m<span class="w"> </span>save/2025-05-12_atac2rna_test/epoch30/pytorch_model.bin<span class="w"> </span>-c<span class="w"> </span>test_data/celltype_info.tsv
+<p><strong>Required arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>: Preprocessed ATAC test set (<code class="docutils literal notranslate"><span class="pre">.pt</span></code> file, generated by <code class="docutils literal notranslate"><span class="pre">data_preprocess</span></code>). The same directory must contain a <code class="docutils literal notranslate"><span class="pre">cell_info.tsv</span></code> file (only available if <code class="docutils literal notranslate"><span class="pre">--shuffle</span></code> was <strong>not</strong> set).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>: Trained model parameters from a previous training run.</p></li>
+</ul>
+<p><strong>Optional arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code>: Output directory. Defaults to <code class="docutils literal notranslate"><span class="pre">./output</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>: Output file name. Defaults to <code class="docutils literal notranslate"><span class="pre">cisformer_predicted_rna</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>: Model config file. Defaults to <code class="docutils literal notranslate"><span class="pre">cisformer_config/atac2rna_config.yaml</span></code>.</p></li>
+</ul>
+<p><strong>Recommended usage</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>atac2rna_predict<span class="w"> </span>-d<span class="w"> </span>-m<span class="w"> </span>-o
+</pre></div>
+</div>
+<blockquote>
+<div><p>⚠️ Only a fixed number of high-expression genes (defined by <code class="docutils literal notranslate"><span class="pre">dec_max_len</span></code> in the config file) will be predicted. If this value is too small, clustering and downstream analyses may be suboptimal.</p>
+</div></blockquote>
+<p><strong>Output</strong></p>
+<p>The prediction result is saved in <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> format and can be directly loaded using Scanpy:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="n">predict_rna</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="s2">&quot;output/cisformer_predicted_rna.h5ad&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">predicted_rna</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 20 × 38244
+    obs: &#39;cell_anno_rna&#39;, &#39;n_genes_rna&#39;, &#39;cell_anno_atac&#39;, &#39;n_genes_atac&#39;
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="atac2rna-link">
+<h2>atac2rna_link<a class="headerlink" href="#atac2rna-link" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">atac2rna_link</span></code> module generates cell-type-specific <code class="docutils literal notranslate"><span class="pre">AnnData</span></code> files that represent the associations between cis-regulatory elements (cCREs) and genes within each cell type.</p>
+<p><strong>Command-Line Usage</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cisformer</span> <span class="n">atac2rna_link</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">d</span> <span class="n">DATA_PATH</span> <span class="o">-</span><span class="n">c</span> <span class="n">CELLTYPE_INFO</span> <span class="o">-</span><span class="n">m</span> <span class="n">MODEL_PARAMETERS</span> <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_DIR</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">NUM_OF_CELLS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">config</span> <span class="n">CONFIG</span><span class="p">]</span>
+                               <span class="p">[</span><span class="o">--</span><span class="n">distance</span> <span class="n">DISTANCE</span><span class="p">]</span>
+
+<span class="n">options</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">d</span> <span class="n">DATA_PATH</span><span class="p">,</span> <span class="o">--</span><span class="n">data_path</span> <span class="n">DATA_PATH</span>
+                        <span class="n">Data</span> <span class="n">path</span>
+  <span class="o">-</span><span class="n">c</span> <span class="n">CELLTYPE_INFO</span><span class="p">,</span> <span class="o">--</span><span class="n">celltype_info</span> <span class="n">CELLTYPE_INFO</span>
+                        <span class="n">Cell</span> <span class="nb">type</span> <span class="n">info</span>
+  <span class="o">-</span><span class="n">m</span> <span class="n">MODEL_PARAMETERS</span><span class="p">,</span> <span class="o">--</span><span class="n">model_parameters</span> <span class="n">MODEL_PARAMETERS</span>
+                        <span class="n">Previous</span> <span class="n">trained</span> <span class="n">model</span> <span class="n">parameters</span>
+  <span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">output_dir</span> <span class="n">OUTPUT_DIR</span>
+                        <span class="n">Output</span> <span class="n">directory</span>
+  <span class="o">-</span><span class="n">n</span> <span class="n">NUM_OF_CELLS</span><span class="p">,</span> <span class="o">--</span><span class="n">num_of_cells</span> <span class="n">NUM_OF_CELLS</span>
+                        <span class="n">Number</span> <span class="n">of</span> <span class="n">cells</span>
+  <span class="o">--</span><span class="n">config</span> <span class="n">CONFIG</span>       <span class="n">Config</span> <span class="n">file</span>
+  <span class="o">--</span><span class="n">distance</span> <span class="n">DISTANCE</span>   <span class="n">Distance</span> <span class="n">threshold</span>
+</pre></div>
+</div>
+<p><strong>Required arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>, <code class="docutils literal notranslate"><span class="pre">--data_path</span></code>: Path to the preprocessed <code class="docutils literal notranslate"><span class="pre">.pt</span></code> test dataset (generated by <code class="docutils literal notranslate"><span class="pre">data_preprocess</span></code>). This must be a file (not a directory), and a corresponding <code class="docutils literal notranslate"><span class="pre">cell-info.tsv</span></code> file must exist in the same directory (generated automatically by <code class="docutils literal notranslate"><span class="pre">data_preprocess</span></code> when the <code class="docutils literal notranslate"><span class="pre">--shuffle</span></code> flag is not set).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--celltype_info</span></code>: A TSV file specifying the cell types. The first column should contain cell barcodes, and the second column should specify the corresponding cell type. No header row should be included.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>, <code class="docutils literal notranslate"><span class="pre">--model_parameters</span></code>: Path to a previously trained model's parameters. The configuration used for training must match the current configuration.</p></li>
+</ul>
+<p><strong>Optional arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code>, <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code>: Directory to store the output files. Default is <code class="docutils literal notranslate"><span class="pre">./output</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">--num_of_cells</span></code>: Maximum number of cells to consider per cell type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--config</span></code>: Path to the model configuration YAML file. Default is <code class="docutils literal notranslate"><span class="pre">cisformer_config/atac2rna_config.yaml</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--distance</span></code>: Maximum genomic distance (in base pairs) from each gene within which to consider potential enhancer regions. Default is 250,000 bp.</p></li>
+</ul>
+<p><strong>Recommended Argument Set</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>atac2rna_link<span class="w"> </span>-d<span class="w"> </span>-c<span class="w"> </span>-m<span class="w"> </span>-o
+</pre></div>
+</div>
+<blockquote>
+<div><p>⚠️ If the dataset contains too few cells, it is possible that not all cell types will be present in the test set. In such cases, you should manually split the dataset and run <code class="docutils literal notranslate"><span class="pre">data_preprocess</span></code> manually:</p>
+</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>data_preprocess<span class="w"> </span>-r<span class="w"> </span>-a<span class="w"> </span>-c<span class="w"> </span>cisformer_config/atac2rna_config.yaml<span class="w"> </span>--cnt<span class="w"> </span>1e10<span class="w"> </span>--atac2rna<span class="w"> </span>--manually
+</pre></div>
+</div>
+<p>Since the model parameters are fixed after training, increasing the number of cells in each type does <strong>not</strong> significantly affect the linkage results—as long as each gene and cCRE in a given cell type is represented. For optimal efficiency, we recommend using <strong>100–200 cells per cell type</strong>, e.g., <code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">100</span></code> or <code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">200</span></code>.</p>
+<p><strong>Output Files</strong></p>
+<p>Within the specified output directory, a <code class="docutils literal notranslate"><span class="pre">cisformer_link</span></code> folder will be created, containing two main types of files:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;celltype&gt;_&lt;distance&gt;_correlation_matrix.h5ad</span></code>:
+The core output file representing the correlation (association strength) between cCREs and genes for each cell type. Rows represent genes, columns represent cCREs.</p>
+<p>Example usage in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">anndata</span>
+<span class="n">corr_mtx</span> <span class="o">=</span> <span class="n">anndata</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="s2">&quot;output/cisformer_link/CD4-intermediate_250kbp_correlation_matrix.h5ad&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corr_mtx</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 38244 × 1033239
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">corr_mtx.obs_names</span></code>: List of gene names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">corr_mtx.var_names</span></code>: Genomic coordinates of cCREs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">corr_mtx.X</span></code>: Sparse matrix of correlation values.</p></li>
+</ul>
+<blockquote>
+<div><p>The linkage strengths between different cell types in the same dataset are directly comparable.</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cell_num.pkl</span></code>:
+A Python pickle file storing the number of cells used for each cell type during inference. This can be loaded using the <code class="docutils literal notranslate"><span class="pre">pickle</span></code> module.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="rna2atac-train">
+<h2>rna2atac_train<a class="headerlink" href="#rna2atac-train" title="Link to this heading"></a></h2>
+<p>Trains a model to predict chromatin accessibility from RNA expression.</p>
+<p><strong>Command-Line Usage</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cisformer</span> <span class="n">rna2atac_train</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">t</span> <span class="n">TRAIN_DATA_DIR</span> <span class="o">-</span><span class="n">v</span> <span class="n">VAL_DATA_DIR</span> <span class="o">-</span><span class="n">n</span> <span class="n">NAME</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="n">SAVE</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG_FILE</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">m</span> <span class="n">MODEL_PARAMETERS</span><span class="p">]</span>
+
+<span class="n">options</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">t</span> <span class="n">TRAIN_DATA_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">train_data_dir</span> <span class="n">TRAIN_DATA_DIR</span>
+                        <span class="n">Training</span> <span class="n">data</span> <span class="n">directory</span>
+  <span class="o">-</span><span class="n">v</span> <span class="n">VAL_DATA_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">val_data_dir</span> <span class="n">VAL_DATA_DIR</span>
+                        <span class="n">Validation</span> <span class="n">data</span> <span class="n">directory</span>
+  <span class="o">-</span><span class="n">n</span> <span class="n">NAME</span><span class="p">,</span> <span class="o">--</span><span class="n">name</span> <span class="n">NAME</span>  <span class="n">Project</span> <span class="n">name</span>
+  <span class="o">-</span><span class="n">s</span> <span class="n">SAVE</span><span class="p">,</span> <span class="o">--</span><span class="n">save</span> <span class="n">SAVE</span>  <span class="n">Save</span> <span class="n">directory</span>
+  <span class="o">-</span><span class="n">c</span> <span class="n">CONFIG_FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">config_file</span> <span class="n">CONFIG_FILE</span>
+                        <span class="n">Config</span> <span class="n">file</span>
+  <span class="o">-</span><span class="n">m</span> <span class="n">MODEL_PARAMETERS</span><span class="p">,</span> <span class="o">--</span><span class="n">model_parameters</span> <span class="n">MODEL_PARAMETERS</span>
+                        <span class="n">Load</span> <span class="n">previous</span> <span class="n">model</span>
+</pre></div>
+</div>
+<p><strong>Required arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>, <code class="docutils literal notranslate"><span class="pre">--train_data_dir</span></code>: Directory containing the preprocessed training data (generated using <code class="docutils literal notranslate"><span class="pre">data_preprocess</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span></code>, <code class="docutils literal notranslate"><span class="pre">--val_data_dir</span></code>: Directory containing the preprocessed validation data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">--name</span></code>: Project name. This name will be used (along with the training timestamp) to name the folder where model checkpoints are saved.</p></li>
+</ul>
+<p><strong>Optional arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span></code>, <code class="docutils literal notranslate"><span class="pre">--save</span></code>: Directory in which to save training checkpoints. Default is <code class="docutils literal notranslate"><span class="pre">./save</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--config_file</span></code>: Model configuration file. Default is <code class="docutils literal notranslate"><span class="pre">cisformer_config/rna2atac_config.yaml</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>, <code class="docutils literal notranslate"><span class="pre">--model_parameters</span></code>: Load a previously trained model for continued training or fine-tuning. The configuration must match the current one.</p></li>
+</ul>
+<p><strong>Recommended Argument Set</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>rna2atac_train<span class="w"> </span>-t<span class="w"> </span>-v<span class="w"> </span>-s<span class="w"> </span>-n
+</pre></div>
+</div>
+<blockquote>
+<div><p>💡 The model parameters from every training epoch will be saved. Typically, the checkpoint from the <strong>last epoch</strong> provides the best performance.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="rna2atac-predict">
+<h2>rna2atac_predict<a class="headerlink" href="#rna2atac-predict" title="Link to this heading"></a></h2>
+<p>Predicts ATAC-seq (chromatin accessibility) profiles from scRNA-seq input using a pretrained model.</p>
+<p><strong>Command-Line Usage</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cisformer</span> <span class="n">rna2atac_predict</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">r</span> <span class="n">RNA_FILE</span> <span class="o">-</span><span class="n">m</span> <span class="n">MODEL_PARAMETERS</span> <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_DIR</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">NAME</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG_FILE</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">rna_len</span> <span class="n">RNA_LEN</span><span class="p">]</span>
+                                  <span class="p">[</span><span class="o">--</span><span class="n">batch_size</span> <span class="n">BATCH_SIZE</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">num_workers</span> <span class="n">NUM_WORKERS</span><span class="p">]</span>
+
+<span class="n">options</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">r</span> <span class="n">RNA_FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">rna_file</span> <span class="n">RNA_FILE</span>
+                        <span class="n">Path</span> <span class="n">of</span> <span class="n">rna</span> <span class="n">adata</span>
+  <span class="o">-</span><span class="n">m</span> <span class="n">MODEL_PARAMETERS</span><span class="p">,</span> <span class="o">--</span><span class="n">model_parameters</span> <span class="n">MODEL_PARAMETERS</span>
+                        <span class="n">Previous</span> <span class="n">trained</span> <span class="n">model</span> <span class="n">parameters</span>
+  <span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">output_dir</span> <span class="n">OUTPUT_DIR</span>
+                        <span class="n">Load</span> <span class="n">model</span>
+  <span class="o">-</span><span class="n">n</span> <span class="n">NAME</span><span class="p">,</span> <span class="o">--</span><span class="n">name</span> <span class="n">NAME</span>  <span class="n">Load</span> <span class="n">model</span>
+  <span class="o">-</span><span class="n">c</span> <span class="n">CONFIG_FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">config_file</span> <span class="n">CONFIG_FILE</span>
+                        <span class="n">Config</span> <span class="n">file</span>
+  <span class="o">--</span><span class="n">rna_len</span> <span class="n">RNA_LEN</span>     <span class="n">Number</span> <span class="n">of</span> <span class="n">non</span><span class="o">-</span><span class="n">zero</span> <span class="n">expressed</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">used</span>
+  <span class="o">--</span><span class="n">batch_size</span> <span class="n">BATCH_SIZE</span>
+                        <span class="n">Batch</span> <span class="n">size</span>
+  <span class="o">--</span><span class="n">num_workers</span> <span class="n">NUM_WORKERS</span>
+                        <span class="n">Number</span> <span class="n">of</span> <span class="n">workers</span>
+</pre></div>
+</div>
+<p><strong>Required arguments</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span></code>, <code class="docutils literal notranslate"><span class="pre">--rna_file</span></code>: Path to an RNA expression matrix in <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> format (processed using <code class="docutils literal notranslate"><span class="pre">scanpy</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>, <code class="docutils literal notranslate"><span class="pre">--model_parameters</span></code>: Path to a pretrained model's parameters (must match the current configuration).</p></li>
+</ul>
+<p><strong>Optional arguments</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code>, <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code>: Output directory. Default is <code class="docutils literal notranslate"><span class="pre">./output</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">--name</span></code>: Filename for the predicted ATAC output. Default is <code class="docutils literal notranslate"><span class="pre">cisformer_predicted_atac</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--config_file</span></code>: Configuration file path. Default is <code class="docutils literal notranslate"><span class="pre">cisformer_config/rna2atac_config.yaml</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--rna_len</span></code>: Maximum number of expressed genes to use per cell when predicting ATAC profiles. Default is <code class="docutils literal notranslate"><span class="pre">3600</span></code>.</p>
+<blockquote>
+<div><p>Note: Increasing this value can dramatically increase memory usage.</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--batch_size</span></code>: Number of cells to process per batch. Due to the large number of prediction targets (up to 1 million peaks), keep this small to avoid excessive memory usage. Default is <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--num_workers</span></code>: Number of worker processes for parallel processing. Also recommended to keep this low. Default is <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+</ul>
+<p><strong>Recommended Argument Set</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cisformer<span class="w"> </span>rna2atac_predict<span class="w"> </span>-r<span class="w"> </span>-m<span class="w"> </span>-o<span class="w"> </span>--rna_len
+</pre></div>
+</div>
+<p><strong>Output</strong></p>
+<p>The output is an <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> file that can be read using <code class="docutils literal notranslate"><span class="pre">scanpy</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="n">predicted_atac</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="s2">&quot;output/cisformer_predicted_atac.h5ad&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">predicted_atac</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 20 × 1033239
+    obs: &#39;cell_anno&#39;, &#39;n_genes&#39;
 </pre></div>
 </div>
 </section>
@@ -242,8 +709,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="installation.html" class="btn btn-neutral float-left" title="Installation Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="modules.html" class="btn btn-neutral float-right" title="cisformer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="Detailed Function Composition" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

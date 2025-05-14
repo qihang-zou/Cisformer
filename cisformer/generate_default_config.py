@@ -5,8 +5,8 @@ def main():
     with open(os.path.join("cisformer_config","atac2rna_config.yaml"), "w") as f:
         f.write("""
 datapreprocess:
-  enc_max_len: 10000 # "whole" for whole sequence
-  dec_max_len: 3000 # "whole" for whole sequence
+  enc_max_len: 10000
+  dec_max_len: 3000
   multiple: 1
 
 model:
@@ -29,16 +29,16 @@ training:
   lr: 5e-4
   gamma_step: 4
   gamma: 0.6
-  patience: 2 # patience for early stop
+  patience: 2
             """
         )
         
     with open(os.path.join("cisformer_config","rna2atac_config.yaml"), "w") as f:
         f.write("""
 datapreprocess:
-  enc_max_len: 2048 # "whole" for whole sequence
-  dec_max_len: 2048 # "whole" for whole sequence
-  multiple: 2 # 40
+  enc_max_len: 2048
+  dec_max_len: 2048
+  multiple: 40
 
 model:
   total_gene: 38244 # length of cisformer gene vocab
@@ -60,7 +60,7 @@ training:
   lr: 1e-3
   gamma_step: 5
   gamma: 0.9
-  patience: 5  # patience for early stop
+  patience: 5 
             """
         )
             

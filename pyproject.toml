@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cisformer"
-version = "1.0.0"
+version = "1.0.1"
 description = "Cisformer command-line tools"
 authors = [{ name = "Chenfei Wang", email = "08chenfeiwang@tongji.edu.cn" }]
 readme = "README.md"
@@ -36,7 +36,8 @@ exclude = [
     "logs",
     "output",
     "preprocessed_dataset",
-    "save"
+    "save",
+    "docs"
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -48,5 +49,6 @@ exclude = [
     "logs",
     "output",
     "preprocessed_dataset",
-    "save"
+    "save",
+    "docs"
 ]
