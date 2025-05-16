@@ -1,7 +1,7 @@
 # Translation of Single-Cell Data Across Modalities with **Cisformer**
 [![PyPI version](https://img.shields.io/pypi/v/cisformer)](https://pypi.org/project/cisformer)
 [![Documentation Status](https://readthedocs.org/projects/cisformer/badge/?version=latest)](https://cisformer.readthedocs.io/en/latest/?badge=stable)
-[![PyPI downloads](https://img.shields.io/pypi/dm/cisformer)](https://pepy.tech/project/cisformer)
+[![PyPI downloads](https://pepy.tech/badge/cisformer)](https://pepy.tech/project/cisformer)
 
 ![logo](figs/logo.png)
 
