@@ -172,7 +172,7 @@ Refer to the [documentation](https://cisformer.readthedocs.io/en/latest/usage.ht
 ---
 
 ## 6. Pretrained models accessed
-You can find pretrained models in our paper at [zenodo 'Pretrained_Models.zip'](https://doi.org/10.5281/zenodo.16982413).
+You can find pretrained models in our paper at [zenodo 'Pretrained_Models.zip'](https://doi.org/10.5281/zenodo.16991152).
 
 ## Acknowledgements
 - [flash-attention2](https://github.com/Dao-AILab/flash-attention)
