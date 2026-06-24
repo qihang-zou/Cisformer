@@ -1,14 +1,10 @@
 # Installation
 
-## Install the Command-Line Package
+## Install Order
 
-Install Cisformer from PyPI:
-
-```bash
-pip install cisformer
-```
-
-This installs the `cisformer` command-line entry point.
+Cisformer does **not** currently use PyPI metadata to install all runtime
+dependencies automatically. Install the runtime environment first, then install
+the Cisformer command-line package from PyPI.
 
 ## Recommended Runtime Environment
 
@@ -20,7 +16,11 @@ recommend using conda to isolate these dependencies:
 conda create -n cisformer python=3.10
 conda activate cisformer
 bash ./requirement.sh
+pip install cisformer
 ```
+
+`requirement.sh` installs the main runtime dependencies. `pip install cisformer`
+installs the `cisformer` CLI and package files.
 
 You can also install the dependencies manually:
 
@@ -36,6 +36,7 @@ pip install flash-attn --no-build-isolation
 pip install torcheval
 conda install tensorboard
 conda install pybedtools
+pip install cisformer
 ```
 
 ## Verify the Installation

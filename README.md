@@ -37,23 +37,23 @@ Full documentation is available at
 
 ## Installation
 
-Install the command-line package from PyPI:
-
-```bash
-pip install cisformer
-```
-
-For training and prediction, create the recommended conda environment first:
+Cisformer does **not** currently rely on PyPI to install all runtime
+dependencies automatically. Install the deep learning and genomics dependencies
+in a conda environment first, then install the Cisformer command-line package
+from PyPI:
 
 ```bash
 conda create -n cisformer python=3.10
 conda activate cisformer
 bash ./requirement.sh
+pip install cisformer
 ```
 
-If installing dependencies manually, use PyTorch with CUDA, Hugging Face
-Accelerate, Scanpy, pybedtools, flash-attn, torcheval, and tensorboard. See the
-installation guide in the documentation for the full environment recipe.
+The PyPI package installs the `cisformer` command itself. Dependencies such as
+PyTorch/CUDA, flash-attn, Scanpy, pybedtools, torcheval, tensorboard, and the
+system bedtools backend should be installed according to your server
+environment. See the installation guide in the documentation for the full
+manual recipe.
 
 ## Quick Start
 
