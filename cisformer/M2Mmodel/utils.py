@@ -6,7 +6,6 @@ import torch
 import os
 import gc
 from accelerate import Accelerator
-from functools import partial
 import pickle as pkl
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -159,6 +158,15 @@ def binning(x, max_value, num_bins = 64):
         bin_index = min(int(x / bin_width), num_bins - 1)
         return bin_index + 1
 
+def binning_array(x, max_value, num_bins = 64):
+    out = np.zeros_like(x, dtype=int)
+    if max_value <= 0:
+        return out
+    nonzero = x > 0
+    bin_width = max_value / num_bins
+    out[nonzero] = np.minimum((x[nonzero] / bin_width).astype(int), num_bins - 1) + 1
+    return out
+
 class PairDataset(Dataset): 
     """
     Special tokens: {<PAD>: 0}. Only used at enc modality. 
@@ -226,8 +234,7 @@ class PairDataset(Dataset):
             rna_value = rna_value.astype(int)
             rna_value = np.clip(rna_value, None, self.max_express)
         else:
-            partial_binning = partial(binning, max_value = rna_value.max(), num_bins = self.max_express)
-            rna_value = np.apply_along_axis(partial_binning, 0, np.array([rna_value])).squeeze().astype(int)
+            rna_value = binning_array(rna_value, max_value = rna_value.max(), num_bins = self.max_express)
         
         rna_idx = np.array(range(len(rna_value)))
         rna_nonzero_idx = rna_idx[rna_value != 0].tolist()
@@ -464,8 +471,7 @@ class Rna2atacDataset(Dataset):
             rna_value = rna_value.astype(int)
             rna_value = np.clip(rna_value, None, self.max_express)
         else:
-            partial_binning = partial(binning, max_value = rna_value.max(), num_bins = self.max_express)
-            rna_value = np.apply_along_axis(partial_binning, 0, np.array([rna_value])).squeeze().astype(int)
+            rna_value = binning_array(rna_value, max_value = rna_value.max(), num_bins = self.max_express)
         rna_idx = np.array(range(len(rna_value)))
         rna_nonzero_idx = rna_idx[rna_value != 0].tolist()
         new_rna_idx = rna_nonzero_idx.copy()

@@ -164,21 +164,21 @@ def whole_attn_score_matrix(q, k, q_mask = None, k_mask = None, double = False):
     Returns:
         list: attention weights for cells
     """
-    # try:
-    #     with autocast():
-    #         output = whole_attn_score_matrix_generator(q, k, q_mask = q_mask, k_mask = k_mask, double = double)
-    # except RuntimeError as e:
-        # if "CUDA out of memory" in str(e):
-        #     print("CUDA out of memory, automatically use CPU to compute ...")
-    q = q.float().cpu()
-    k = k.float().cpu()
-    if exists(q_mask):
-        q_mask = q_mask.cpu()
-    if exists(k_mask):
-        k_mask = k_mask.cpu()
-    output = whole_attn_score_matrix_generator(q, k, q_mask = q_mask, k_mask = k_mask, double = double)
-        # else:
-        #     raise e
+    try:
+        with autocast():
+            output = whole_attn_score_matrix_generator(q, k, q_mask = q_mask, k_mask = k_mask, double = double)
+    except RuntimeError as e:
+        if "CUDA out of memory" in str(e):
+            print("CUDA out of memory, automatically use CPU to compute ...")
+            q = q.float().cpu()
+            k = k.float().cpu()
+            if exists(q_mask):
+                q_mask = q_mask.cpu()
+            if exists(k_mask):
+                k_mask = k_mask.cpu()
+            output = whole_attn_score_matrix_generator(q, k, q_mask = q_mask, k_mask = k_mask, double = double)
+        else:
+            raise e
     return output
 
 # def neighbour_attn_score_matrix(q, k, start=0, end=-1, mask = None):
@@ -491,17 +491,16 @@ class M2M_rna2atac(nn.Module):
         
         return self.dec(seq_out, context = encodings, **dec_kwargs)
     
-    def generate_attn_weight(self, seq_in, seq_out, value, which = "decoder", enc_mask = None, dec_mask = None, double=False, **kwargs):
+    def generate_attn_weight(self, seq_in, seq_out, value, which = "decoder", enc_mask = None, dec_mask = None, **kwargs):
         """This is used to generate self attention score matrix with the same xlabel and ylabel
 
         Args:
-            seq_in (tensor): Input sequence for encoder.
-            seq_out (tensor): Input sequence for decoder.
-            value (tensor): Input value for encoder.
-            which (str, optional): Which Attention weight you want to generate: "encoder" or "decoder".
-            enc_mask (tensor, optional): Bool dtype, True for seq_in to keep, False to drop.
-            dec_mask (tensor, optional): Bool dtype, True for seq_out to keep, False to drop.
-            double (bool, optional): Compute with double precision.
+            seq_in (tensor): input sequence for encoder
+            seq_out (tensor): input sequence for decoder
+            value (tensor): input value for encoder
+            which (str, optional): Which Attention weight you want to generate: "encoder" or "decoder"
+            enc_mask (tensor, optional): bool dtype, True for seq_in to keep, False to drop.
+            dec_mask (tensor, optional): bool dtype, True for seq_out to keep, False to drop.
 
         Returns:
             list: attention weights for cells. Cross attention shape: (seq_out, seq_in)
@@ -536,7 +535,7 @@ class M2M_rna2atac(nn.Module):
                     q = f.fn.to_q(x)
                     k = f.fn.to_k(x)
                     q, k = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h = self.enc.block.heads), (q, k))
-                    enc_attn = whole_attn_score_matrix(q, k, enc_kwargs['mask'], enc_kwargs['mask'], double=double)
+                    enc_attn = whole_attn_score_matrix(q, k, enc_kwargs['mask'], enc_kwargs['mask'])
                     return enc_attn
                 x = x + f(x, **f_args)
                 x = x + g(x, **g_args)
@@ -560,7 +559,7 @@ class M2M_rna2atac(nn.Module):
                     q = f.fn.to_q(x)
                     k = f.fn.to_k(encodings)
                     q, k = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h = self.dec.block.heads), (q, k))
-                    cross_attn = whole_attn_score_matrix(q, k, dec_kwargs['mask'], enc_kwargs['mask'], double=double)
+                    cross_attn = whole_attn_score_matrix(q, k, dec_kwargs['mask'], enc_kwargs['mask'])
                     # cross_attn = neighbour_attn_score_matrix(q, k, start, end)
                     return cross_attn
                 x = x + f(x, **f_args)
@@ -749,16 +748,15 @@ class M2M_atac2rna(nn.Module):
         
     
     # def generate_self_attn_score_matrix(self, seq_in, seq_out, value=None, start=0, end=100, encoder = True, **kwargs):
-    def generate_attn_weight(self, seq_in, seq_out, which = "encoder", enc_mask = None, dec_mask = None, double=False, **kwargs):
+    def generate_attn_weight(self, seq_in, seq_out, which = "encoder", enc_mask = None, dec_mask = None, **kwargs):
         """This is used to generate self attention score matrix with the same xlabel and ylabel
 
         Args:
-            seq_in (tensor): Input sequence for encoder.
-            seq_out (tensor): Input sequence for decoder.
-            which (str, optional): Which Attention weight you want to generate: "encoder", "decoder" or "cross".
-            enc_mask (tensor, optional): Bool dtype, True for seq_in to keep, False to drop.
-            dec_mask (tensor, optional): Bool dtype, True for seq_out to keep, False to drop.
-            double (bool, optional): Compute with double precision.
+            seq_in (tensor): input sequence for encoder
+            seq_out (tensor): input sequence for decoder
+            which (str, optional): Which Attention weight you want to generate: "encoder", "decoder" or "cross"
+            enc_mask (tensor, optional): bool dtype, True for seq_in to keep, False to drop.
+            dec_mask (tensor, optional): bool dtype, True for seq_out to keep, False to drop.
 
         Returns:
             list: attention weights for cells. Cross attention shape: (seq_out, seq_in)
@@ -789,7 +787,7 @@ class M2M_atac2rna(nn.Module):
                     # print(q)
                     # print(k)
                     q, k = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h = self.enc.block.heads), (q, k))
-                    enc_attn = whole_attn_score_matrix(q, k, enc_kwargs['mask'], enc_kwargs['mask'], double=double)
+                    enc_attn = whole_attn_score_matrix(q, k, enc_kwargs['mask'], enc_kwargs['mask'])
                     return enc_attn
                 x = x + f(x, **f_args)
                 x = x + g(x, **g_args)
@@ -820,13 +818,13 @@ class M2M_atac2rna(nn.Module):
                     k = f.fn.to_k(x)
                     q, k = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h = self.dec.block.heads), (q, k))
                     # dec_attn = neighbour_attn_score_matrix(q, k, start, end)
-                    dec_attn = whole_attn_score_matrix(q, k, dec_kwargs['mask'], dec_kwargs['mask'], double=double)
+                    dec_attn = whole_attn_score_matrix(q, k, dec_kwargs['mask'], dec_kwargs['mask'])
                     return dec_attn
                 if i == len(dec_layers_and_args) - 1 and which == "cross":
                     q = g.fn.to_q(x)
                     k = g.fn.to_k(encodings)
                     q, k = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h = self.dec.block.heads), (q, k))
-                    cross_attn = whole_attn_score_matrix(q, k, dec_kwargs['mask'], enc_kwargs['mask'], double=double)
+                    cross_attn = whole_attn_score_matrix(q, k, dec_kwargs['mask'], enc_kwargs['mask'])
                     # cross_attn = neighbour_attn_score_matrix(q, k, start, end)
                     return cross_attn
                 x = x + f(x, **f_args)

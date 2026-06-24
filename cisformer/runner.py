@@ -19,7 +19,8 @@ def main():
     subparsers = parser.add_subparsers(dest="command")
 
     # generate_default_config
-    subparsers.add_parser("generate_default_config", help="Generate cisformer default config")
+    config_parser = subparsers.add_parser("generate_default_config", help="Generate cisformer default config")
+    config_parser.add_argument("--species", choices=["human", "mouse"], default="human", help="human or mouse")
 
     # data_preprocess
     preprocess_parser = subparsers.add_parser("data_preprocess", help="Preprocess data")
@@ -33,7 +34,8 @@ def main():
     preprocess_parser.add_argument("--atac2rna", action="store_true", help="Process ATAC to RNA")
     preprocess_parser.add_argument("--manually", action="store_true", help="Manual mode")
     preprocess_parser.add_argument("--shuffle", action="store_true", help="Shuffle data")
-    # preprocess_parser.add_argument("--dec_whole_length", action="store_true", help="Decode whole length")
+    preprocess_parser.add_argument("--dec_whole_length", action="store_true", help="Decode whole length")
+    preprocess_parser.add_argument("--species", required=True, help="human or mouse. Species of the dataset, which will determine the gene and cCRE annotation used in mapping")
 
     # atac2rna_train
     train_a2r = subparsers.add_parser("atac2rna_train", help="Train ATAC to RNA model")
@@ -50,6 +52,7 @@ def main():
     predict_a2r.add_argument("-o", "--output_dir", default="output", help="Output directory")
     predict_a2r.add_argument("-n", "--name", default="cisformer_predicted_rna", help="Output name")
     predict_a2r.add_argument("-c", "--config_file", default="cisformer_config/atac2rna_config.yaml", help="Config file")
+    predict_a2r.add_argument("--species", required=True, choices=["human", "mouse"], help="human or mouse")
 
     # atac2rna_link
     attention = subparsers.add_parser("atac2rna_link", help="Generate attention matrix")
@@ -60,6 +63,8 @@ def main():
     attention.add_argument("-n", "--num_of_cells", type=int, default=None, help="Number of cells")
     attention.add_argument("--config", default="cisformer_config/atac2rna_config.yaml", help="Config file")
     attention.add_argument("--distance", type=int, default=250000, help="Distance threshold")
+    attention.add_argument("--species", required=True, help="human or mouse. Species of the dataset, which will determine gtf in mapping")
+
 
     # rna2atac_train
     train_r2a = subparsers.add_parser("rna2atac_train", help="Train RNA to ATAC model")
@@ -77,20 +82,21 @@ def main():
     predict_r2a.add_argument("-o", "--output_dir", default="output", help="Load model")
     predict_r2a.add_argument("-n", "--name", default="cisformer_predicted_atac", help="Load model")
     predict_r2a.add_argument("-c", "--config_file", default="cisformer_config/rna2atac_config.yaml", help="Config file")
-    predict_r2a.add_argument("--rna_len", default=3600, help="Number of non-zero expressed gene in used")
-    predict_r2a.add_argument("--batch_size", default=2, help="Batch size")
-    predict_r2a.add_argument("--num_workers", default=2, help="Number of workers")
+    predict_r2a.add_argument("--rna_len", default=3600, help="Load model")
+    predict_r2a.add_argument("--batch_size", default=2, help="Load model")
+    predict_r2a.add_argument("--num_workers", default=2, help="Load model")
+    predict_r2a.add_argument("--species", required=True, choices=["human", "mouse"], help="human or mouse")
 
     args = parser.parse_args()
 
     if args.command == "generate_default_config":
-        generate_default_config_module.main()
+        generate_default_config_module.main(species=args.species)
 
     elif args.command == "data_preprocess":
         data_preprocess_module.main(
             args.rna, args.atac, args.manually, args.atac2rna, args.save_dir,
             args.config, args.batch_size, args.num_workers, args.cnt,
-            args.shuffle
+            args.shuffle, args.dec_whole_length, species=args.species
         )
 
     elif args.command == "atac2rna_train":
@@ -103,12 +109,15 @@ def main():
         )
 
     elif args.command == "atac2rna_predict":
-        atac2rna_predict_module.main(args.data, args.output_dir, args.model_parameters, args.config_file, args.name)
+        atac2rna_predict_module.main(
+            args.data, args.output_dir, args.model_parameters, args.config_file,
+            args.name, species=args.species
+        )
 
     elif args.command == "atac2rna_link":
         attention_module.main(
             args.output_dir, args.data_path, args.celltype_info, args.model_parameters,
-            args.num_of_cells, args.config, args.distance
+            args.num_of_cells, args.config, args.distance, species=args.species
         )
 
     elif args.command == "rna2atac_train":
@@ -130,7 +139,8 @@ def main():
             f"{os.path.join(script_dir, 'rna2atac_predict.py')} "
             f"-r {args.rna_file} -m {args.model_parameters} -o {args.output_dir} "
             f"-n {args.name} -c {args.config_file} "
-            f"--rna_len {args.rna_len} --batch_size {args.batch_size} --num_workers {args.num_workers}"
+            f"--rna_len {args.rna_len} --batch_size {args.batch_size} --num_workers {args.num_workers} "
+            f"--species {args.species}"
         )
     else:
         parser.print_help()

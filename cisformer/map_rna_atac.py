@@ -2,7 +2,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import scanpy as sc
 import pandas as pd
-from scipy.sparse import csr_matrix
+from scipy.sparse import csr_matrix, issparse
 import pybedtools
 import numpy as np
 from tqdm import tqdm
@@ -26,7 +26,23 @@ def is_ens(gene_iter):
     else:
         return False
 
-def main(rna_file, atac_file, save_dir=None, test_percent=0.2, seed=2023, divide=False, log1p=False):
+def _matrix_max(matrix):
+    if issparse(matrix):
+        return float(matrix.max())
+    return float(np.max(matrix))
+
+def _resolve_log1p(rna, log1p):
+    if log1p == "auto":
+        rna_max = _matrix_max(rna.X)
+        should_log1p = rna_max <= 10
+        if should_log1p:
+            print(f"scRNA-seq expression matrix max value is {rna_max:.4g} (<= 10). Applying log1p.")
+        else:
+            print(f"scRNA-seq expression matrix max value is {rna_max:.4g} (> 10). Skipping log1p.")
+        return should_log1p
+    return log1p
+
+def main(rna_file, atac_file, save_dir=None, test_percent=0.2, seed=2023, divide=False, log1p=False, species='human'):
     """map rna and atac and divide them into train and test set
 
     Args:
@@ -36,15 +52,16 @@ def main(rna_file, atac_file, save_dir=None, test_percent=0.2, seed=2023, divide
         test_percent (float, optional): _description_. Defaults to 0.2.
         seed (int, optional): _description_. Defaults to 2023.
         divide (bool, optional): Whether to split the dataset into train and test dataset. Defaults to True.
-        log1p (bool, optional): Whether to normalize rna dataset by log1p.
+        log1p (bool or "auto", optional): Whether to normalize rna dataset by log1p.
     """
     random.seed(seed)
     
     ## rna
-    rna = sc.read_h5ad(rna_file)  # 12012 × 36601
+    rna = sc.read_h5ad(rna_file)
+    log1p = _resolve_log1p(rna, log1p)
     if log1p:
         sc.pp.log1p(rna)
-    genes = pd.read_table(rfiles('cisformer.resource')/'human_genes.tsv', names=['gene_ids', 'gene_name'])
+    genes = pd.read_table(rfiles('cisformer.resource')/f'{species}_genes.tsv', names=['gene_ids', 'gene_name'])
     if len(rna.var_names) == len(genes['gene_name']) and all(rna.var_names == genes['gene_name']):
         print("Previous mapped rna detected, skip mapping.")
         rna_new = rna
@@ -65,12 +82,12 @@ def main(rna_file, atac_file, save_dir=None, test_percent=0.2, seed=2023, divide
         # X_new.fillna(value=0, inplace=True)
         rna_new = sc.AnnData(X_new.values, obs=rna.obs, var=pd.DataFrame({'gene_ids': genes['gene_ids'], 'gene_name': genes['gene_name'], 'feature_types': 'Gene Expression'}))
         rna_new.var.index = genes['gene_name'].values
-        rna_new.X = csr_matrix(rna_new.X)   # 12012 × 38244
+        rna_new.X = csr_matrix(rna_new.X)
     rna_obs = set(rna_new.obs_names)
 
     ## atac
-    atac =  sc.read_h5ad(atac_file) # 12012 × 94993
-    cCREs = pd.read_table(rfiles('cisformer.resource')/'human_cCREs.bed', names=['chr', 'start', 'end'])
+    atac =  sc.read_h5ad(atac_file)
+    cCREs = pd.read_table(rfiles('cisformer.resource')/f'{species}_cCREs.bed', names=['chr', 'start', 'end'])
     cCREs['idx'] = range(cCREs.shape[0])
     ccre = cCREs['chr']+':'+cCREs['start'].map(str)+'-'+cCREs['end'].map(str)
     if len(atac.var_names) == len(ccre) and all(atac.var_names == ccre):
@@ -98,7 +115,7 @@ def main(rna_file, atac_file, save_dir=None, test_percent=0.2, seed=2023, divide
 
         atac_new = sc.AnnData(m, obs=atac.obs, var=pd.DataFrame({'cCREs': ccre, 'feature_types': 'Peaks'}))
         atac_new.var.index = atac_new.var['cCREs'].values
-        atac_new.X = csr_matrix(atac_new.X)    # 12012 × 1033239
+        atac_new.X = csr_matrix(atac_new.X)
     atac_obs = set(atac_new.obs_names)
     
     # map, divide and save

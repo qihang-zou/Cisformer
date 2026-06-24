@@ -1,16 +1,28 @@
 import os
+import argparse
+from importlib.resources import files as rfiles
 
-def main():
+SUPPORTED_SPECIES = ("human", "mouse")
+
+def _total_gene(species):
+    if species not in SUPPORTED_SPECIES:
+        raise ValueError("Species should be human or mouse.")
+    gene_file = rfiles("cisformer.resource") / f"{species}_genes.tsv"
+    with open(gene_file, "r") as f:
+        return sum(1 for _ in f)
+
+def main(species="human"):
+    total_gene = _total_gene(species)
     os.makedirs("cisformer_config", exist_ok=True)
     with open(os.path.join("cisformer_config","atac2rna_config.yaml"), "w") as f:
-        f.write("""
+        f.write(f"""
 datapreprocess:
-  enc_max_len: 10000
-  dec_max_len: 3000
+  enc_max_len: 10000 # "whole" for whole sequence
+  dec_max_len: 3000 # "whole" for whole sequence
   multiple: 1
 
 model:
-  total_gene: 38244 # length of cisformer gene vocab
+  total_gene: {total_gene} # length of cisformer gene vocab
   max_express: 7
   dim: 280 # should be devided by 7
   dec_depth: 4
@@ -29,19 +41,19 @@ training:
   lr: 5e-4
   gamma_step: 4
   gamma: 0.6
-  patience: 2
+  patience: 2 # patience for early stop
             """
         )
         
     with open(os.path.join("cisformer_config","rna2atac_config.yaml"), "w") as f:
-        f.write("""
+        f.write(f"""
 datapreprocess:
-  enc_max_len: 2048
-  dec_max_len: 2048
-  multiple: 40
+  enc_max_len: 2048 # "whole" for whole sequence
+  dec_max_len: 2048 # "whole" for whole sequence
+  multiple: 2 # 40
 
 model:
-  total_gene: 38244 # length of cisformer gene vocab
+  total_gene: {total_gene} # length of cisformer gene vocab
   max_express: 64
   dim: 210 # should be devided by 7
   dec_depth: 6
@@ -60,7 +72,7 @@ training:
   lr: 1e-3
   gamma_step: 5
   gamma: 0.9
-  patience: 5 
+  patience: 5  # patience for early stop
             """
         )
             
@@ -88,4 +100,7 @@ training:
         )
         
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--species", choices=SUPPORTED_SPECIES, default="human", help="human or mouse")
+    args = parser.parse_args()
+    main(species=args.species)

@@ -34,6 +34,7 @@ def main():
     parser.add_argument("--rna_len", default=3600, help="Load model")
     parser.add_argument("--batch_size", default=2, help="Load model")
     parser.add_argument("--num_workers", default=2, help="Load model")
+    parser.add_argument("--species", required=True, choices=["human", "mouse"], help="human or mouse")
 
     # # path
     # parser.add_argument('-d', '--data_dir', type=str, default=None, help="dir of preprocessed paired data")
@@ -53,6 +54,7 @@ def main():
     num_workers = int(args.num_workers)
     output_dir = args.output_dir
     name = args.name
+    species = args.species
     # iconv_weight = args.iconv_weight
     # from config
     with open(config_file, "r") as f:
@@ -63,8 +65,8 @@ def main():
     setup_seed(SEED)
     accelerator = New_Accelerator(step_scheduler_with_optimizer = False)
     
-    genes = pd.read_table(rfiles('cisformer.resource')/'human_genes.tsv', names=['gene_ids', 'gene_name'])
-    peak_list = pd.read_csv(rfiles("cisformer.resource")/"human_cCREs.bed", sep="\t", header=None)
+    genes = pd.read_table(rfiles('cisformer.resource')/f'{species}_genes.tsv', names=['gene_ids', 'gene_name'])
+    peak_list = pd.read_csv(rfiles("cisformer.resource")/f"{species}_cCREs.bed", sep="\t", header=None)
     peak_list_str = list(peak_list[0]+":"+peak_list[1].map(str)+"-"+peak_list[2].map(str))
     atac_sequence_idx = np.array(range(len(peak_list_str)))
     

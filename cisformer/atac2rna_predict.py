@@ -18,7 +18,7 @@ from cisformer.M2Mmodel.utils import *
 
 
 
-def main(data, output, load, config_file, name):
+def main(data, output, load, config_file, name, species="human"):
     
     # parser = argparse.ArgumentParser(description='atac2rna predict script of cisformer')
     
@@ -56,7 +56,7 @@ def main(data, output, load, config_file, name):
     
     # assert not os.path.isdir(file), f"'{file}' is not a file"
     obs = pd.read_csv(os.path.join(data_dir, "cell_info.tsv"), sep="\t", index_col=0)
-    gene = pd.read_table(rfiles("cisformer.resource")/'human_genes.tsv', names=['gene_ids', 'gene_name'])
+    gene = pd.read_table(rfiles("cisformer.resource")/f'{species}_genes.tsv', names=['gene_ids', 'gene_name'])
     var = pd.DataFrame(index = gene['gene_name'])
     
     # from config

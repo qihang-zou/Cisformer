@@ -3,10 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Cisformer's documentation!
-=====================================
+Cisformer Documentation
+=======================
 
-Cisformer is a novel Transformer-based deep learning framework for cross-modal prediction and regulatory inference in single-cell data.
+Cisformer is a Transformer-based framework for cross-modality generation and
+regulatory inference in single-cell RNA-seq and single-cell ATAC-seq data. It
+supports RNA-to-ATAC prediction, ATAC-to-RNA prediction, and cell-type-specific
+cCRE-gene link inference from trained ATAC-to-RNA models.
+
+Version 1.1.0 adds mouse reference support, species-aware config generation,
+automatic ATAC-to-RNA log1p detection, and faster link matrix generation.
 
 .. toctree::
    :maxdepth: 1
@@ -16,12 +22,10 @@ Cisformer is a novel Transformer-based deep learning framework for cross-modal p
    installation.md
    quickstart.md
    usage.md
-   modules
    release.md
 
-Indices and tables
-==================
+Index
+=====
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`

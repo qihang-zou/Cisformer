@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath('../../'))  # 使得 cisformer 可以被导�
 project = 'cisformer'
 copyright = '2025, Qihang Zou'
 author = 'Qihang Zou'
-release = '1.0.1'
+release = '1.1.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -25,7 +25,11 @@ extensions = [
 ]
 
 templates_path = ['_templates']
-exclude_patterns = []
+exclude_patterns = [
+    'modules.rst',
+    'cisformer.rst',
+    'cisformer.M2Mmodel.rst',
+]
 
 language = 'python'
 

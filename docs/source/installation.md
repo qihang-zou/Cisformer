@@ -1,16 +1,29 @@
-# Installation Guide
+# Installation
 
-## Miniconda3
-We recommend using [Miniconda3](https://www.anaconda.com/docs/getting-started/miniconda/main) or [Anaconda](https://www.anaconda.com/) as the environment manager. Make sure `conda` is installed.
+## Install the Command-Line Package
 
-## Creating the Cisformer Environment
-To get started, copy [requirement.sh](https://raw.githubusercontent.com/qihang-zou/Cisformer/refs/heads/main/requirement.sh) to your local server and run:
+Install Cisformer from PyPI:
+
+```bash
+pip install cisformer
+```
+
+This installs the `cisformer` command-line entry point.
+
+## Recommended Runtime Environment
+
+Cisformer training and prediction rely on PyTorch, CUDA, Hugging Face
+Accelerate, Scanpy, pybedtools, flash-attn, torcheval, and tensorboard. We
+recommend using conda to isolate these dependencies:
+
 ```bash
 conda create -n cisformer python=3.10
 conda activate cisformer
 bash ./requirement.sh
 ```
-Alternatively, you can install dependencies manually:
+
+You can also install the dependencies manually:
+
 ```bash
 conda create -n cisformer python=3.10
 conda activate cisformer
@@ -25,7 +38,27 @@ conda install tensorboard
 conda install pybedtools
 ```
 
-## Install from PyPI
+## Verify the Installation
+
+After installation, check the CLI:
+
 ```bash
-pip install cisformer
+cisformer -h
+cisformer generate_default_config -h
 ```
+
+## GPU and Distributed Training
+
+Cisformer uses Hugging Face Accelerate for distributed training. After running
+`cisformer generate_default_config`, edit `cisformer_config/accelerate_config.yaml`
+to match your machine:
+
+- `gpu_ids`: comma-separated GPU IDs.
+- `num_processes`: number of GPU processes.
+- `main_process_port`: use a free port, especially when running multiple jobs.
+
+## Bedtools Requirement
+
+Preprocessing and link inference use genomic interval operations through
+`pybedtools`. Make sure the system `bedtools` binary is available in your
+environment if pybedtools reports backend errors.

@@ -3,18 +3,17 @@ warnings.filterwarnings("ignore")
 import torch
 # import argparse
 import os
-import scanpy as sc
 import tqdm
 # import resource
 import yaml
 import pandas as pd
-import random
 
 # import sys
 # sys.path.append("M2Mmodel")
 from cisformer.map_rna_atac import main as scmap
 from cisformer.M2Mmodel.utils import setup_seed, PairDataset
 torch.multiprocessing.set_sharing_strategy('file_system')
+
 
 def pair_data_process(rna, 
                       atac, 
@@ -41,13 +40,28 @@ def pair_data_process(rna,
         obs = pd.merge(rna.obs, atac.obs, left_index=True, right_index=True, suffixes=("_rna", "_atac"))
         obs.to_csv(os.path.join(save_dir, "cell_info.tsv"), sep="\t")
     
-    i = 1
     num = 0
+    buffered_items = 0
     out_rna_sequence = []
     out_rna_value = []
     out_atac_sequence = []
     out_atac_value = []
     out_enc_pad_mask = []
+
+    def flush_buffer(num):
+        torch.save([
+                    torch.cat(out_rna_sequence, dim = 0), 
+                    torch.cat(out_rna_value, dim = 0), 
+                    torch.cat(out_atac_sequence, dim = 0), 
+                    torch.cat(out_atac_value, dim = 0),
+                    torch.cat(out_enc_pad_mask, dim = 0)
+                    ], 
+                os.path.join(save_dir, file_name + "_" + str(num) + ".pt"))
+        out_rna_sequence.clear()
+        out_rna_value.clear()
+        out_atac_sequence.clear()
+        out_atac_value.clear()
+        out_enc_pad_mask.clear()
     
     for rna_sequence, rna_value, atac_sequence, atac_value, enc_pad_mask in tqdm.tqdm(dataloader, ncols=80, desc=f"Generating {tag}:"):
         # rna_sequence: b, mul, n
@@ -61,6 +75,7 @@ def pair_data_process(rna,
         out_atac_sequence.append(atac_sequence.view(-1, atac_sequence.shape[-2], atac_sequence.shape[-1]))
         out_atac_value.append(atac_value.view(-1, atac_value.shape[-1]))
         out_enc_pad_mask.append(enc_pad_mask.view(-1, enc_pad_mask.shape[-1]))
+        buffered_items += out_rna_sequence[-1].shape[0]
         
         # if i:
         #     # 获取当前进程的内存占用（在Unix系统上可用）
@@ -68,34 +83,16 @@ def pair_data_process(rna,
         #     print(f"\nMemory used per process: {memory_info * 10 / 1024:.2f} MB\n")
         #     i = 0
         
-        if len(out_rna_sequence) * batch * multiple >= cnt:
-            torch.save([
-                        torch.cat(out_rna_sequence, dim = 0), 
-                        torch.cat(out_rna_value, dim = 0), 
-                        torch.cat(out_atac_sequence, dim = 0), 
-                        torch.cat(out_atac_value, dim = 0),
-                        torch.cat(out_enc_pad_mask, dim = 0)
-                        ], 
-                    os.path.join(save_dir, file_name + "_" + str(num) + ".pt"))
-            out_rna_sequence = []
-            out_rna_value = []
-            out_atac_sequence = []
-            out_atac_value = []
-            out_enc_pad_mask = []
+        if buffered_items >= cnt:
+            flush_buffer(num)
+            buffered_items = 0
             num += 1
             
-    if out_rna_sequence != []:
-        torch.save([
-                    torch.cat(out_rna_sequence, dim = 0), 
-                    torch.cat(out_rna_value, dim = 0), 
-                    torch.cat(out_atac_sequence, dim = 0), 
-                    torch.cat(out_atac_value, dim = 0),
-                    torch.cat(out_enc_pad_mask, dim = 0)
-                    ], 
-                os.path.join(save_dir, file_name + "_" + str(num) + ".pt"))
+    if out_rna_sequence:
+        flush_buffer(num)
 
 
-def main(rna, atac, manually, atac2rna, save_dir, config, batch_size, num_workers, cnt, shuffle):
+def main(rna, atac, manually, atac2rna, save_dir, config, batch_size, num_workers, cnt, shuffle, dec_whole_length, species='human'):
     """_summary_
     The shape and type of saved .pt files:
     Parent (list): rna_sequence, rna_value, atac_sequence, atac_value, enc_pad_mask
@@ -134,7 +131,7 @@ def main(rna, atac, manually, atac2rna, save_dir, config, batch_size, num_worker
         config = os.path.join("cisformer_config","atac2rna_config.yaml") if atac2rna else os.path.join("cisformer_config","rna2atac_config.yaml")
     with open(config, "r") as f:
         config = yaml.safe_load(f)
-    log1p = True if atac2rna else False
+    log1p = "auto" if atac2rna else False
     
     pair_args = { 
         "rna_num_bin": config["model"]['max_express'], 
@@ -151,7 +148,7 @@ def main(rna, atac, manually, atac2rna, save_dir, config, batch_size, num_worker
     atac_name = atac_name.replace(".h5ad","")
     file_name = atac_name+"2"+rna_name if atac2rna else rna_name+"2"+atac_name
     if not manually:
-        mapped_dict = scmap(rna_dir, atac_dir, save_dir, divide=True, log1p=log1p)
+        mapped_dict = scmap(rna_dir, atac_dir, save_dir, divide=True, log1p=log1p, species=species)
         train_rna = mapped_dict['train_rna']
         train_atac = mapped_dict['train_atac']
         test_rna = mapped_dict['test_rna']
@@ -218,13 +215,13 @@ def main(rna, atac, manually, atac2rna, save_dir, config, batch_size, num_worker
             #                   **pair_args)
         
     else:
-        mapped_dict = scmap(rna_dir, atac_dir, save_dir, divide=False, log1p=log1p)
+        mapped_dict = scmap(rna_dir, atac_dir, save_dir, divide=False, log1p=log1p, species=species)
         rna = mapped_dict['rna_new']
         atac = mapped_dict['atac_new']
         pair_data_process(rna, 
                           atac,
                           enc_max_len = config["datapreprocess"]['enc_max_len'], 
-                          dec_max_len = config["datapreprocess"]['dec_max_len'], 
+                          dec_max_len = config["datapreprocess"]['dec_max_len'] if not dec_whole_length else "whole", 
                           shuffle = shuffle, 
                           save_dir = save_dir,
                           cnt= cnt,

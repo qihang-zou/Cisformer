@@ -12,14 +12,14 @@ import time
 from importlib.resources import files as rfiles
 
 import pybedtools
-from scipy.sparse import lil_matrix
+from scipy.sparse import coo_matrix
 from scipy.sparse import save_npz
 import anndata
+from torch.utils.data import Dataset
 
 # import sys
 # sys.path.append("M2Mmodel")
 # import M2Mmodel
-from cisformer.M2Mmodel.utils import *
 from cisformer.M2Mmodel.M2M import M2M_atac2rna
 from cisformer.compute_surround_enhancer import main as cse
 
@@ -31,6 +31,31 @@ random.seed(2024)
 # %%
 def Info(*args):
     print(f"[{time.strftime('%H:%M:%S')}]" , *args) 
+
+def select_least_used_gpu():
+    if torch.cuda.is_available():
+        num_gpus = torch.cuda.device_count()
+        memory_allocated = [torch.cuda.memory_allocated(device) for device in range(num_gpus)]
+        least_used_gpu = memory_allocated.index(min(memory_allocated))
+        device = torch.device(f'cuda:{least_used_gpu}')
+        print(f'Selected GPU: {least_used_gpu}')
+        return device
+    else:
+        device = torch.device('cpu')
+        print('No GPU available, using CPU')
+        return device
+
+class PreDataset(Dataset):
+    def __init__(self, data):
+        super().__init__()
+        self.data = data
+        
+    def __getitem__(self, index):
+        output = [each[index] for each in self.data]
+        return tuple(output)
+        
+    def __len__(self):
+        return len(self.data[0])
 
 def split_grange(gene_coordinate):
     """split genome range string
@@ -102,7 +127,7 @@ def comp(ground_truth, output_links):
     output = pd.concat(output)
     return output['Regulated'].sum() / len(output)
 
-def main(output_dir, data_path, celltype_info, model_parameters, num_of_cells, config, distance):
+def main(output_dir, data_path, celltype_info, model_parameters, num_of_cells, config, distance, species):
     # parser = argparse.ArgumentParser(description='pretrain script of M2M')
 
     # parser.add_argument('-d', '--data_path', type=str, help="Preprocessed file end with '.pt'. You can specify the directory or filename of certain file")
@@ -123,11 +148,11 @@ def main(output_dir, data_path, celltype_info, model_parameters, num_of_cells, c
     num_of_cells = num_of_cells
     config = config
     extend = int(distance/1e3) #kbp
-    gne = rfiles("cisformer.resource")/f"gene_surround_enhancers_{extend}kbp_idx.pkl"
+    gne = rfiles("cisformer.resource")/f"{species}_gene_surround_enhancers_{extend}kbp_idx.pkl"
     if not os.path.exists(gne):
         print(gne)
         print("Generating gene surrounded enhancers dictionary for the first time. This will take a while...")
-        cse(distance)
+        cse(distance, species=species)
     else:
         print("Previous generated gene surrounded enhancers dictionary found!")
 
@@ -148,17 +173,47 @@ def main(output_dir, data_path, celltype_info, model_parameters, num_of_cells, c
 
     # %%
     # ref
-    peak_list = rfiles("cisformer.resource")/"human_cCREs.bed"
-    gene_list = rfiles("cisformer.resource")/"human_genes.tsv"
+    peak_list = rfiles("cisformer.resource")/f"{species}_cCREs.bed"
+    gene_list = rfiles("cisformer.resource")/f"{species}_genes.tsv"
 
     peak_list = pd.read_csv(peak_list, sep="\t", header=None)
     gene_list = pd.read_csv(gene_list, sep="\t", header=None)
     gene_list = gene_list[1].tolist()
     peak_list_str = list(peak_list[0]+":"+peak_list[1].map(str)+"-"+peak_list[2].map(str))
 
-    gene_ref = pd.read_csv(rfiles("cisformer.resource")/"hg38.refGene.gtf.gz", sep="\t", header=None)
-    gene_ref[9] = gene_ref.iloc[:,8].map(lambda x: x.split(";")[-2].split('"')[-2])
-    gene_ref = gene_ref[gene_ref[2]=="transcript"]
+    # if species == "human":
+    #     gene_ref = pd.read_csv(rfiles("cisformer.resource")/"hg38.refGene.gtf.gz", sep="\t", header=None)
+    # elif species == "mouse":
+    #     gene_ref = pd.read_csv(rfiles("cisformer.resource")/"gencode.vM39.primary_assembly.annotation.gtf.gz", sep="\t", header=None)
+    # else:
+    #     raise ValueError("Species should be human or mouse.")
+    # gene_ref[9] = gene_ref.iloc[:,8].map(lambda x: x.split(";")[-2].split('"')[-2])
+    # gene_ref = gene_ref[gene_ref[2]=="transcript"]
+    
+    if species == "human":
+        gene_ref = pd.read_csv(
+            rfiles("cisformer.resource") / "hg38.refGene.gtf.gz",
+            sep="\t",
+            header=None,
+            comment="#",
+            low_memory=False,
+        )
+    elif species == "mouse":
+        gene_ref = pd.read_csv(
+            rfiles("cisformer.resource") / "gencode.vM39.primary_assembly.annotation.gtf.gz",
+            sep="\t",
+            header=None,
+            comment="#",
+            low_memory=False,
+        )
+    else:
+        raise ValueError("Species should be human or mouse.")
+    gene_ref = gene_ref[gene_ref[2] == "transcript"].copy()
+    attr = gene_ref[8].astype(str)
+    gene_name = attr.str.extract(r'gene_name "([^"]+)"', expand=False)
+    gene_id = attr.str.extract(r'gene_id "([^"]+)"', expand=False)
+    transcript_id = attr.str.extract(r'transcript_id "([^"]+)"', expand=False)
+    gene_ref[9] = gene_name.fillna(gene_id).fillna(transcript_id)
 
     # celltype_info
     celltype_info = pd.read_csv(celltype_info, sep="\t", header=None)
@@ -229,6 +284,7 @@ def main(output_dir, data_path, celltype_info, model_parameters, num_of_cells, c
     # device = "cuda:6"
     model.to(device)
     dataloader_kwargs = {'batch_size': batch_size, 'shuffle': True}
+    atac_digit_weights = torch.tensor([10 ** i for i in range(6, -1, -1)], device=device)
 
     with torch.no_grad():
         for celltype in celltype_data.keys():
@@ -241,7 +297,9 @@ def main(output_dir, data_path, celltype_info, model_parameters, num_of_cells, c
                 continue
             dataset = PreDataset(celltype_data[celltype])
             loader = torch.utils.data.DataLoader(dataset, **dataloader_kwargs)
-            output_attn = lil_matrix((len(gene_list), len(peak_list)))
+            output_rows = []
+            output_cols = []
+            output_data = []
             i = 0
             for inputs in tqdm.tqdm(loader, ncols=80):
                 if i >= num_of_cells:
@@ -249,15 +307,16 @@ def main(output_dir, data_path, celltype_info, model_parameters, num_of_cells, c
                 i += 1
                 rna_sequence, rna_value, atac_sequence, _, enc_pad_mask = [each.to(device) for each in inputs]
                 attn = model.generate_attn_weight(atac_sequence, rna_sequence, which = "cross", enc_mask = enc_pad_mask, dec_mask = (rna_value != 0)) # row: gene col: peak
-                atac_sequence_new = atac_sequence.cpu().numpy()
-                atac_sequence_new = np.apply_along_axis(list_digit_back, -1, atac_sequence_new) - 1 # 减掉pad index
-                atac_sequence_new = torch.Tensor(atac_sequence_new).to(device)
+                atac_sequence_new = (atac_sequence.long() * atac_digit_weights).sum(dim=-1) - 1 # 减掉pad index
                 rna_sequence_new = rna_sequence - 1 # 减掉pad index
                     
                 for j in range(rna_sequence.shape[0]):
-                    attn_cell = torch.Tensor(attn[j]).to(device)
+                    attn_cell = attn[j]
                     atac_sequence_cell = atac_sequence_new[j, atac_sequence_new[j] >= 0]
                     rna_sequence_cell = rna_sequence_new[j, rna_sequence_new[j] >= 0]
+                    atac_idx_map = {}
+                    for idx, peak in enumerate(atac_sequence_cell.tolist()):
+                        atac_idx_map.setdefault(int(peak), idx)
                     # 对两个维度都做rank normalize
                     # Rank normalization by row
                     order = torch.argsort(attn_cell, dim=0)
@@ -272,19 +331,30 @@ def main(output_dir, data_path, celltype_info, model_parameters, num_of_cells, c
                     
                     for x in range(attn_cell.shape[0]):
                         gene = int(rna_sequence_cell[x].item())
-                        try:
-                            related_enhancers = gene_near_enhancers[gene]
-                        except KeyError:
+                        related_enhancers = gene_near_enhancers.get(gene)
+                        if related_enhancers is None:
                             continue
-                        related_enhancers = gene_near_enhancers[gene]
-                        related_enhancers = [each for each in related_enhancers if each in atac_sequence_cell]
-                        related_enhancers_attn_idx = [atac_sequence_cell.tolist().index(each) for each in related_enhancers]
+                        related_enhancers_attn_pairs = [
+                            (enhancer, atac_idx_map[enhancer])
+                            for enhancer in related_enhancers
+                            if enhancer in atac_idx_map
+                        ]
+                        if not related_enhancers_attn_pairs:
+                            continue
+                        related_enhancers, related_enhancers_attn_idx = zip(*related_enhancers_attn_pairs)
                         if related_enhancers_attn_idx:
-                            output_attn[gene, related_enhancers] += attn_cell[x, related_enhancers_attn_idx].cpu().numpy()
+                            values = attn_cell[x, list(related_enhancers_attn_idx)].cpu().numpy()
+                            output_rows.extend([gene] * len(related_enhancers))
+                            output_cols.extend(related_enhancers)
+                            output_data.extend(values)
             
             # 使用csr稀疏矩阵格式保存
+            output_attn = coo_matrix(
+                (output_data, (output_rows, output_cols)),
+                shape=(len(gene_list), len(peak_list)),
+                dtype=float
+            ).tocsr()
             output_attn = output_attn / len(dataset)
-            output_attn = output_attn.tocsr()
             adata_output = anndata.AnnData(X=output_attn)
             adata_output.obs_names = gene_list
             adata_output.var_names = peak_list_str
