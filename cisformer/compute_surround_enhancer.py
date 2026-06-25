@@ -3,8 +3,10 @@ import os
 import tqdm
 import pickle as pkl
 from importlib.resources import files as rfiles
+from cisformer.resource_utils import gene_surround_path, require_annotation, validate_species
 
 def main(extend = 250000, species = "human"):
+    validate_species(species)
     total_enhancers = rfiles("cisformer.resource")/f"{species}_cCREs.bed"
     total_genes = rfiles("cisformer.resource")/f"{species}_genes.tsv"
     # extend = 250000
@@ -13,34 +15,13 @@ def main(extend = 250000, species = "human"):
     total_genes = pd.read_csv(total_genes, sep="\t", header=None)
     total_genes = total_genes[1].tolist()
 
-    # if species == "human":
-    #     gene_ref = pd.read_csv(rfiles("cisformer.resource")/"hg38.refGene.gtf.gz", sep="\t", header=None)
-    # elif species == "mouse":
-    #     gene_ref = pd.read_csv(rfiles("cisformer.resource")/"gencode.vM39.primary_assembly.annotation.gtf.gz", sep="\t", header=None)
-    # else:
-    #     raise ValueError("Species should be human or mouse.")
-
-    # gene_ref[9] = gene_ref.iloc[:,8].map(lambda x: x.split(";")[-2].split('"')[-2])
-    # gene_ref = gene_ref[gene_ref[2]=="transcript"]
-    
-    if species == "human":
-        gene_ref = pd.read_csv(
-            rfiles("cisformer.resource") / "hg38.refGene.gtf.gz",
-            sep="\t",
-            header=None,
-            comment="#",
-            low_memory=False,
-        )
-    elif species == "mouse":
-        gene_ref = pd.read_csv(
-            rfiles("cisformer.resource") / "gencode.vM39.primary_assembly.annotation.gtf.gz",
-            sep="\t",
-            header=None,
-            comment="#",
-            low_memory=False,
-        )
-    else:
-        raise ValueError("Species should be human or mouse.")
+    gene_ref = pd.read_csv(
+        require_annotation(species),
+        sep="\t",
+        header=None,
+        comment="#",
+        low_memory=False,
+    )
 
     gene_ref = gene_ref[gene_ref[2] == "transcript"].copy()
 
@@ -134,9 +115,10 @@ def main(extend = 250000, species = "human"):
     print("Example overlap:", list(overlap)[:20])
     print("Example total_genes:", total_genes[:20])
     print("Example GTF gene names:", gene_ref[9].head(20).tolist())
-    with open(rfiles("cisformer.resource")/f"{species}_gene_surround_enhancers_{int(extend/1e3)}kbp.pkl", "wb") as f:
+    extend_kbp = int(extend/1e3)
+    with open(gene_surround_path(species, extend_kbp), "wb") as f:
         pkl.dump(gene_near_enhancers, f)
-    with open(rfiles("cisformer.resource")/f"{species}_gene_surround_enhancers_{int(extend/1e3)}kbp_idx.pkl", "wb") as f:
+    with open(gene_surround_path(species, extend_kbp, idx=True), "wb") as f:
         pkl.dump(gene_near_enhancers_idx, f)
 
 if __name__ == "__main__":

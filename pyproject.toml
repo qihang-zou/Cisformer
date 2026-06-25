@@ -29,6 +29,8 @@ packages = ["cisformer"]
 
 [tool.hatch.build.targets.sdist]
 exclude = [
+    "cisformer/resource/*.gtf.gz",
+    "cisformer/resource/*gene_surround_enhancers*.pkl",
     "figs",
     "test_data",
     "cisformer_config",
@@ -42,6 +44,8 @@ exclude = [
 
 [tool.hatch.build.targets.wheel]
 exclude = [
+    "cisformer/resource/*.gtf.gz",
+    "cisformer/resource/*gene_surround_enhancers*.pkl",
     "figs",
     "test_data",
     "cisformer_config",

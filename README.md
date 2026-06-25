@@ -72,9 +72,13 @@ This creates `cisformer_config/` with:
 - `accelerate_config.yaml`
 - `atac2rna_config.yaml`
 - `rna2atac_config.yaml`
+- `resource/<species> Gencode annotation .gtf.gz`
 
 Edit `accelerate_config.yaml` before distributed training, especially `gpu_ids`,
 `num_processes`, and `main_process_port`.
+
+Large Gencode annotation files are downloaded during this step and are not
+bundled in the PyPI package. Human uses Gencode v49; mouse uses Gencode M39.
 
 ## Input Requirements
 

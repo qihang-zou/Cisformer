@@ -22,6 +22,7 @@ from torch.utils.data import Dataset
 # import M2Mmodel
 from cisformer.M2Mmodel.M2M import M2M_atac2rna
 from cisformer.compute_surround_enhancer import main as cse
+from cisformer.resource_utils import gene_surround_path, require_annotation
 
 random.seed(2024)
 
@@ -148,9 +149,10 @@ def main(output_dir, data_path, celltype_info, model_parameters, num_of_cells, c
     num_of_cells = num_of_cells
     config = config
     extend = int(distance/1e3) #kbp
-    gne = rfiles("cisformer.resource")/f"{species}_gene_surround_enhancers_{extend}kbp_idx.pkl"
+    gne = gene_surround_path(species, extend, idx=True)
     if not os.path.exists(gne):
         print(gne)
+        require_annotation(species)
         print("Generating gene surrounded enhancers dictionary for the first time. This will take a while...")
         cse(distance, species=species)
     else:
@@ -180,40 +182,6 @@ def main(output_dir, data_path, celltype_info, model_parameters, num_of_cells, c
     gene_list = pd.read_csv(gene_list, sep="\t", header=None)
     gene_list = gene_list[1].tolist()
     peak_list_str = list(peak_list[0]+":"+peak_list[1].map(str)+"-"+peak_list[2].map(str))
-
-    # if species == "human":
-    #     gene_ref = pd.read_csv(rfiles("cisformer.resource")/"hg38.refGene.gtf.gz", sep="\t", header=None)
-    # elif species == "mouse":
-    #     gene_ref = pd.read_csv(rfiles("cisformer.resource")/"gencode.vM39.primary_assembly.annotation.gtf.gz", sep="\t", header=None)
-    # else:
-    #     raise ValueError("Species should be human or mouse.")
-    # gene_ref[9] = gene_ref.iloc[:,8].map(lambda x: x.split(";")[-2].split('"')[-2])
-    # gene_ref = gene_ref[gene_ref[2]=="transcript"]
-    
-    if species == "human":
-        gene_ref = pd.read_csv(
-            rfiles("cisformer.resource") / "hg38.refGene.gtf.gz",
-            sep="\t",
-            header=None,
-            comment="#",
-            low_memory=False,
-        )
-    elif species == "mouse":
-        gene_ref = pd.read_csv(
-            rfiles("cisformer.resource") / "gencode.vM39.primary_assembly.annotation.gtf.gz",
-            sep="\t",
-            header=None,
-            comment="#",
-            low_memory=False,
-        )
-    else:
-        raise ValueError("Species should be human or mouse.")
-    gene_ref = gene_ref[gene_ref[2] == "transcript"].copy()
-    attr = gene_ref[8].astype(str)
-    gene_name = attr.str.extract(r'gene_name "([^"]+)"', expand=False)
-    gene_id = attr.str.extract(r'gene_id "([^"]+)"', expand=False)
-    transcript_id = attr.str.extract(r'transcript_id "([^"]+)"', expand=False)
-    gene_ref[9] = gene_name.fillna(gene_id).fillna(transcript_id)
 
     # celltype_info
     celltype_info = pd.read_csv(celltype_info, sep="\t", header=None)

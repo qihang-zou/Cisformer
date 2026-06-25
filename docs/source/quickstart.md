@@ -14,6 +14,7 @@ This creates:
 - `cisformer_config/accelerate_config.yaml`
 - `cisformer_config/atac2rna_config.yaml`
 - `cisformer_config/rna2atac_config.yaml`
+- `cisformer_config/resource/<species> Gencode annotation .gtf.gz`
 
 For mouse:
 
@@ -23,6 +24,10 @@ cisformer generate_default_config --species mouse
 
 The generated config uses the correct species-specific `model.total_gene`
 automatically.
+
+Large Gencode annotation files are downloaded during config generation instead
+of being bundled in the PyPI package. Human uses Gencode v49 and mouse uses
+Gencode M39.
 
 ## 2. Prepare Input Data
 

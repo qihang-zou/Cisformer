@@ -4,8 +4,10 @@ logs/
 output/
 preprocessed_dataset/
 save/
-cisformer/resource/gene_surround_enhancers_250kbp_idx.pkl
-cisformer/resource/gene_surround_enhancers_250kbp.pkl
 */__pycache__
 Pretrained_Models.zip
 pretrained_parameters/
+build/
+*.egg-info/
+docs/build/
+*.pyc

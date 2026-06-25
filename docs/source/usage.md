@@ -25,21 +25,31 @@ should be used with the matching config and species.
 Generate default configuration files:
 
 ```bash
-cisformer generate_default_config [--species {human,mouse}]
+cisformer generate_default_config [--species {human,mouse}] [--skip_annotation_download]
 ```
 
 Arguments:
 
 - `--species`: Reference species. Default: `human`.
+- `--skip_annotation_download`: generate YAML files only and do not download the
+  Gencode annotation.
 
 Outputs:
 
 - `cisformer_config/accelerate_config.yaml`
 - `cisformer_config/atac2rna_config.yaml`
 - `cisformer_config/rna2atac_config.yaml`
+- `cisformer_config/resource/gencode.v49.primary_assembly.annotation.gtf.gz`
+  for human, or
+  `cisformer_config/resource/gencode.vM39.primary_assembly.annotation.gtf.gz`
+  for mouse.
 
 `model.total_gene` is written from the selected species reference. For human it
 is `38244`; for mouse it is `23234`.
+
+The Gencode annotation is used when Cisformer builds gene-neighborhood enhancer
+dictionaries for `atac2rna_link`. It is downloaded to the working directory and
+is not bundled in the PyPI package.
 
 ### accelerate_config.yaml
 

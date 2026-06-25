@@ -9,6 +9,9 @@
 - Added `--species {human,mouse}` to species-sensitive commands.
 - Added species-aware config generation. Human configs use `total_gene: 38244`;
   mouse configs use `total_gene: 23234`.
+- Genome annotation `.gtf.gz` files are no longer bundled in the PyPI package.
+  `generate_default_config` downloads the selected species Gencode annotation
+  into `cisformer_config/resource/`.
 
 ### Changed
 
@@ -25,6 +28,8 @@
 - Regenerate configs with `cisformer generate_default_config --species human` or
   `--species mouse` before training new v1.1.0 models.
 - Use the same species value for preprocessing, prediction, and link generation.
+- Keep `cisformer_config/resource/` with your project. It contains downloaded
+  genome annotations and generated link-neighborhood caches.
 - Existing human models trained with the old 38,244-gene vocabulary should use
   human configs.
 

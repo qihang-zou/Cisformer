@@ -1,18 +1,18 @@
 import os
 import argparse
 from importlib.resources import files as rfiles
-
-SUPPORTED_SPECIES = ("human", "mouse")
+from cisformer.resource_utils import SUPPORTED_SPECIES, download_annotation, validate_species
 
 def _total_gene(species):
-    if species not in SUPPORTED_SPECIES:
-        raise ValueError("Species should be human or mouse.")
+    validate_species(species)
     gene_file = rfiles("cisformer.resource") / f"{species}_genes.tsv"
     with open(gene_file, "r") as f:
         return sum(1 for _ in f)
 
-def main(species="human"):
+def main(species="human", download_genome_annotation=True):
     total_gene = _total_gene(species)
+    if download_genome_annotation:
+        download_annotation(species)
     os.makedirs("cisformer_config", exist_ok=True)
     with open(os.path.join("cisformer_config","atac2rna_config.yaml"), "w") as f:
         f.write(f"""
@@ -102,5 +102,6 @@ training:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--species", choices=SUPPORTED_SPECIES, default="human", help="human or mouse")
+    parser.add_argument("--skip_annotation_download", action="store_true", help="Only generate config files; do not download genome annotation")
     args = parser.parse_args()
-    main(species=args.species)
+    main(species=args.species, download_genome_annotation=not args.skip_annotation_download)
