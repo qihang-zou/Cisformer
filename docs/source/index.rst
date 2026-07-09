@@ -22,6 +22,7 @@ automatic ATAC-to-RNA log1p detection, and faster link matrix generation.
    installation.md
    quickstart.md
    usage.md
+   publishing.md
    release.md
 
 Index
