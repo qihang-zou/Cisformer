@@ -66,11 +66,11 @@ def _store_counts(adata, counts):
 def _resolve_log1p(rna, log1p):
     if log1p == "auto":
         rna_max = _matrix_max(rna.X)
-        should_log1p = rna_max <= 10
+        should_log1p = rna_max > 10
         if should_log1p:
-            print(f"scRNA-seq expression matrix max value is {rna_max:.4g} (<= 10). Applying log1p.")
+            print(f"scRNA-seq expression matrix max value is {rna_max:.4g} (> 10). Applying log1p.")
         else:
-            print(f"scRNA-seq expression matrix max value is {rna_max:.4g} (> 10). Skipping log1p.")
+            print(f"scRNA-seq expression matrix max value is {rna_max:.4g} (<= 10). Skipping log1p.")
         return should_log1p
     return log1p
 
